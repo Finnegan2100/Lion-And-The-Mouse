@@ -129,8 +129,8 @@ var LION = {
 				LION.currentWidth = 636.920;
 			}
 		}
-        w.setTimeout(function() {
-                w.scrollTo(0,1);
+        window.setTimeout(function() {
+                window.scrollTo(0,1);
         }, 1);	
     }
 };
