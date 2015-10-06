@@ -346,7 +346,6 @@ var moveRight = false;
 var pressedHome = false;
 var pressedRight = false;
 
-var startFade = false;
 
 var ratio = 0;
 var paused = false;
@@ -687,9 +686,8 @@ window.addEventListener("mouseup",onMouseUp,false);
 function main() {
 
  
- if (context.globalAlpha < 1) {
 	mouseDown = false;
- }
+
  
 	LION.resize();
 	checkTimings();
@@ -701,86 +699,29 @@ function main() {
 	movePages();
 	renderPageText();
 	checkCollision();
+	renderUI();
 	
 
-	if (currentPage === 1 && moveLeft === false) {
-		context.drawImage(narradorOffImage,narradorOff.x,narradorOff.y,narradorOff.width,narradorOff.height);
-		context.drawImage(narradorOnImage,narradorOn.x,narradorOn.y,narradorOn.width,narradorOn.height);
+
+	if (currentPage > 1 && currentPage < 21 && narratorOn === true && paused === false) {
+
+		context.save();
+		context.globalAlpha = .8;
+
+		if(yPos === 564)
+			context.fillStyle = "#ebebeb";
+
+		if(yPos === 624)
+			context.fillStyle = "#dcdcdc";
+
+		context.globalAlpha = .7;
+		context.fillStyle = "#ff2841";
+		context.fillText(words[value1],startingPoints1[value1],yPos);
+		context.restore();
 	}
-	if (currentPage === 21 && pages[22].x <= -24900.5) {
-		context.drawImage(finImage,fin.x,fin.y,fin.width,fin.height);
-		context.drawImage(leerImage,leer.x,leer.y,leer.width,leer.height);
-	}
-	if (currentPage > 1) {
-		passed1 = true;
-		context.drawImage(textboxShadowImage,textboxShadow.x,textboxShadow.y,textboxShadow.width,textboxShadow.height);
-	}
 
 
 
-
-//DRAWING THE HIGHLIGHTED BOX FOR EACH WORD
-
-if(currentPage > 1 && currentPage < 21 && narratorOn === true && paused === false)
-{
-
-context.save();
-
-context.globalAlpha = .8;
-
-if(yPos === 564)
-context.fillStyle = "#ebebeb";
-
-if(yPos === 624)
-context.fillStyle = "#dcdcdc";
-
-
-context.globalAlpha = .7;
-context.fillStyle = "#ff2841";
-context.fillText(words[value1],startingPoints1[value1],yPos);
-
-
-
-context.restore();
-
-
-}
-
-
-if(currentPage > 1)
-{
-if(onPressed === false && currentPage < 21)
-{
-context.drawImage(rightButtonImage,rightButton.x,rightButton.y,rightButton.width,rightButton.height);
-}
-if(onPressed === true && pressedRight === true && currentPage < 21)
-{
-context.drawImage(rightButtonImage,rightButton.x,rightButton.y,rightButton.width,rightButton.height);
-}
-
-context.drawImage(homeImage,home.x,home.y,home.width,home.height);
-
-
-
-if (LION.android || LION.ios || LION.isIE) {
-context.drawImage(xButtonImage,xButton.x,xButton.y,xButton.width,xButton.height);
-}
-
-}
-
-
-
-
-if (startFade === true) {
-	
-	fadeOut();
-	context.globalAlpha -= 0.1;
-	currentPage = 1;
-	startFade = false;
-	vo.pause();
-	offPressed = false;
-	onPressed = false;
-}
     
 	  
 		  if(mouseUp === true)
@@ -802,7 +743,7 @@ if (startFade === true) {
 					narratorOn = true;
 					mouseUp = false;
 					pressedTouch = true;
-					//vo.playbackRate = .5;
+		
 				  }
 			}
 			
@@ -810,7 +751,6 @@ if (startFade === true) {
 			{
 				  if(pressedHome === true)
 				  {
-				  startFade = true;
 				  pressedHome = false;
 				  }
 				  
@@ -851,7 +791,6 @@ if (startFade === true) {
 			{
 				  if(pressedHome === true)
 				  {
-				  startFade = true;
 				  pressedHome = false;
 				  }
 				  
@@ -863,20 +802,4 @@ if (startFade === true) {
 				  }
 			}
 			}
-	      
-
-	
-
-if(paused === true && moveLeft === false && moveRight === false && currentPage > 1 && currentPage < 21)
-context.drawImage(rightButtonHintImage,rightButtonHint.x,rightButtonHint.y,rightButtonHint.width,rightButtonHint.height);
-		
-		
-	
- context.fillStyle = "#000";
-context.font =  "37px sesame";
-
-
-
-		  
-
 }

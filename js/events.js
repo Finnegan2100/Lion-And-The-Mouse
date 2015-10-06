@@ -1,11 +1,9 @@
 
 function onMouseDown(event) {
-	
-	if (!startFade) {
-		mouseDown = true;
-		mouseUp = false;
-		event.preventDefault(); 
-	}
+
+	mouseDown = true;
+	mouseUp = false;
+	event.preventDefault(); 
 }
 
 function onMouseUp(event) {

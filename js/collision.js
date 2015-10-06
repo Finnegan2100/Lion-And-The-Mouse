@@ -8,7 +8,7 @@ function checkCollision() {
   
     if (hitTestPoint(mouseX,mouseY,hotSpot1))  {
  
-		if (mouseDown === true && currentPage > 1 && currentPage < 21 && startFade === false && context.globalAlpha === 1) {
+		if (mouseDown === true && currentPage > 1 && currentPage < 21 && context.globalAlpha === 1) {
 			pressedRight = true;
 			context.drawImage(rightButtonPressedImage,rightButtonPressed.x,rightButtonPressed.y,rightButtonPressed.width,rightButtonPressed.height);
 		}
@@ -52,7 +52,7 @@ function checkCollision() {
   //console.log(pages[20].x);
    if(hitTestPoint(mouseX,mouseY,hotSpot5))  {
 
-		  if(mouseDown === true && currentPage === 21 && !startFade)
+		  if(mouseDown === true && currentPage === 21)
 		  {
 		  startFade = true;
 		  value1 = 0;
@@ -61,7 +61,7 @@ function checkCollision() {
   
      if(hitTestPoint(mouseX,mouseY,hotSpot6))  {
  
-	     if(mouseDown === true && startFade === false)
+	     if(mouseDown === true)
 		  {
 		  //window.focus();
 		  window.close();
