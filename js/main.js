@@ -33,6 +33,7 @@ var LION = {
 	scale: 1,
     currentWidth:  null,
     currentHeight:  null,
+	ua: navigator.userAgent.toLowerCase(),
 
     init: function() {
 		
@@ -41,25 +42,29 @@ var LION = {
 
 
     resize: function() {
+		
+		var innerW = window.innerWidth,
+			innerH= window.innerHeight,
+			c = canvas.style;
 	
-	   if(window.innerWidth > window.innerHeight) {
+	   if (innerW > innerH) {
 	       
-			LION.currentHeight = window.innerHeight; //Repeat the assigments from init every call to resize 
+			LION.currentHeight = innerH; //Repeat the assigments from init every call to resize 
 			LION.currentWidth = LION.currentHeight * LION.RATIO;
 			
 			
-			canvas.style.width = (LION.currentWidth / 1.5352) + 'px';
-			canvas.style.height = LION.currentHeight + 'px';
-			canvas.style.marginTop = 0 + "px";
+			c.width = (LION.currentWidth / 1.5352) + 'px';
+			c.height = LION.currentHeight + 'px';
+			c.marginTop = 0 + "px";
 			
-			if(canvas.style.height === 320 + 'px') {
-				canvas.style.marginLeft = 80 + "px";
+			if (c.height === 320 + 'px') {
+				c.marginLeft = 80 + "px";
 			}
-			if(canvas.style.height === 268 + 'px') {
-				canvas.style.marginLeft = 100 + "px";
+			if (c.height === 268 + 'px') {
+				c.marginLeft = 100 + "px";
 			}
-			if(window.innerWidth === 480) {
-				canvas.style.marginLeft = 30 + "px";
+			if (innerW === 480) {
+				c.marginLeft = 30 + "px";
 				page1.height = 1468;
 			}
 			
@@ -67,70 +72,70 @@ var LION = {
 		}
 		
 		
-		if(window.innerHeight > window.innerWidth) {
+		if (innerH > innerW) {
 			
-			canvas.style.width = window.innerWidth + 'px';
+			c.width = innerW + 'px';
 			
 			LION.scale = LION.currentWidth / LION.WIDTH;
 			
-		    if(window.innerWidth === 768) {		//IPAD
-			canvas.style.height = 672 + 'px';
-			canvas.style.marginTop = 130 + "px";
+		    if (innerW === 768) {		//IPAD
+			c.height = 672 + 'px';
+			c.marginTop = 130 + "px";
 			LION.currentWidth = 1376 + 'px';
 			}
-			if(window.innerWidth === 320) {		//IPHONE  && IPOD
+			if (innerW === 320) {		//IPHONE  && IPOD
 				
-				if (window.innerHeight === 529) {  //IPHONE
+				if (innerH === 529) {  //IPHONE
 				
-					canvas.style.height = 320 + 'px';
+					c.height = 320 + 'px';
 					LION.currentWidth = 655.35 + 'px';
-					canvas.style.marginTop = 50 + "px";
-					canvas.style.marginLeft = 0 + "px";
+					c.marginTop = 50 + "px";
+					c.marginLeft = 0 + "px";
 				}
 				
-				if (window.innerHeight === 356) {    //IPOD
+				if (innerH === 356) {    //IPOD
 				
-					canvas.style.marginTop = 30 + "px";
-					canvas.style.height = 300 + 'px';
+					c.marginTop = 30 + "px";
+					c.height = 300 + 'px';
 					LION.currentWidth = 455.35 + 'px';
-					canvas.style.marginLeft = 0 + "px";
+					c.marginLeft = 0 + "px";
 					page1.height = 1468;
 				}
 			}
 			
-			if (window.innerWidth === 360) {		//GALAXY S3,S4,S5
-				canvas.style.height = 287 + 'px';
-				canvas.style.marginTop = 95 + "px";
+			if (innerW === 360) {		//GALAXY S3,S4,S5
+				c.height = 287 + 'px';
+				c.marginTop = 95 + "px";
 				LION.currentWidth = 587.769;
 			}
-			if (window.innerWidth === 600) {		//NEXUS 7
-				canvas.style.height = 431 + 'px';
-				canvas.style.marginTop = 125 + "px";
+			if (innerW === 600) {		//NEXUS 7
+				c.height = 431 + 'px';
+				c.marginTop = 125 + "px";
 				LION.currentWidth = 882.677;
 			}
-			if (window.innerWidth === 601) {		//TAB 4
-				canvas.style.height = 431 + 'px';
-				canvas.style.marginTop = 135 + "px";
+			if (innerW === 601) {		//TAB 4
+				c.height = 431 + 'px';
+				c.marginTop = 135 + "px";
 				LION.currentWidth = 892.677;
 			}
-			if (window.innerWidth === 800) {		//NEXUS 10
-				canvas.style.height = 631 + 'px';
-				canvas.style.marginTop = 175 + "px";
+			if (innerW === 800) {		//NEXUS 10
+				c.height = 631 + 'px';
+				c.marginTop = 175 + "px";
 				LION.currentWidth = 1292.272;
 			}
-			if (window.innerWidth === 384) {		//OPTIMUS G
-				canvas.style.height = 311 + 'px';
-				canvas.style.marginTop = 90 + "px";
+			if (innerW === 384) {		//OPTIMUS G
+				c.height = 311 + 'px';
+				c.marginTop = 90 + "px";
 				LION.currentWidth = 636.920;
 			}
 		}
-        window.setTimeout(function() {
-                window.scrollTo(0,1);
+        w.setTimeout(function() {
+                w.scrollTo(0,1);
         }, 1);	
     }
 };
 
-LION.ua = navigator.userAgent.toLowerCase();
+
 LION.android = LION.ua.indexOf('android') > -1 ? true : false;
 LION.ios = ( LION.ua.indexOf('iphone') > -1 || LION.ua.indexOf('ipad') > -1  ) ? 
     true : false;
@@ -696,68 +701,8 @@ window.addEventListener("mousemove",onMouseMove,false);
 window.addEventListener("mousedown",onMouseDown,false);
 window.addEventListener("mouseup",onMouseUp,false);
 
-//TOUCH EVENT LISTNERS
-
-canvas.addEventListener("touchmove", onTouchMove, false);
-canvas.addEventListener("touchstart", onTouchStart, false);
-canvas.addEventListener("touchend", onTouchEnd, false);
-
 //MOUSE EVENT HANDLERS
 
-function onMouseDown(event)
-{
-if(!startFade) {
-mouseDown = true;
-mouseUp = false;
-event.preventDefault(); 
-}
-}
-
-function onMouseUp(event)
-{
-mouseDown = false;
-mouseUp = true;
-event.preventDefault(); 
-}
-
-function onMouseMove(event)			//TRACKING THE MOUSE X AND Y VALUES
-{ 
- mouseX = (event.pageX - canvas.offsetLeft) / LION.scale; 
- mouseY = (event.pageY - canvas.offsetTop) / LION.scale;
- event.preventDefault(); 
-}
-
-
-//TOUCH EVENT HANDLERS
-
-function onTouchMove(event)			//TRACKING THE TOUCH X AND Y VALUES
-{ 
-/*
-  tapX = (event.targetTouches[0].pageX - canvas.offsetLeft) / LION.scale;
-  tapY = (event.targetTouches[0].pageY - canvas.offsetTop) / LION.scale ;
-  event.preventDefault(); 
-  */
-}
-
-function onTouchStart(event)	    //TRACKING THE TOUCH X AND Y VALUES
-{ 
-/*
-  tapX = event.targetTouches[0].pageX - canvas.offsetLeft;
-  tapY = event.targetTouches[0].pageY - canvas.offsetTop;
-  event.preventDefault(); 
-  touchDown = true;
-  touchUp = false;
-  */
-}
-
-function onTouchEnd(event)			//TRACKING THE TOUCH X AND Y VALUES
-{ 
-/*
-  touchDown = false;
-  touchUp = true;
-  event.preventDefault();
-  */
-}
 
 
 //LOAD HANDLER
