@@ -365,28 +365,7 @@ var passedPageOne = false;
 
 //ARRAY OF STARTING X VALUES FOP EACH WORD
 
-
-
-var startingPoints1 = [100,177,227,280,344,425,576,630,734,"p1ln2",100,160,200,413,470,  //HOY / ES
-"p2ln1",100,277,427,517,604,632,724,"p2ln2",100,296,370,473,630,660,760,830,930,978,  //ABELARDO / PLANEANDO
-"p3ln1",100,240,320,350,462,513,572,"p3ln2",100,160,288,323,372,460,510,695,765,   //PANCHO / DE
-"p4ln1", "ds",150,293,430,563,640,706,750,800,100,250,300,393,558,723,774, //--PANCHO  / PANCHO
-"p5ln1","filler",150,227,308,348,414,480,575,630,790,825,887,"p5ln2",100,165,220,332,450,523,643,757, //HOY  / ME
-"p6ln1",100,230,285,335,365,460,572,624,"p6ln2",147,227,365,455,543,573,710,763,813, //PANCHO / HOY
-"p7ln1",100,185,217,297,470,540,716,806,850,"p7ln2",100,174,334,404,523, //CHIP / QUE
-"p8ln1",100,194,295,350,"p8ln2","filler",148,247,337,474,545,610,656, //ELMO / CHIP
-"p9ln1","filler",148,226,310,373,426,533,689,739,783,880,910,"p9ln2",100,246,315,432,560,630,760, //HOY / MUCHO
-"p10ln1",100,193,246,407,482,535,"p10ln2",100,150,254,300,360,470,520, //ELMO / A
-"p11ln1",100,265,297,390,494,690,730,847,"p11ln2",100,193,294,354,414,514,636,745,796, //ABELARDO / ELMO
-"p12ln1","filler1","filler2",160,216,266,310,440,492,603,654,760,794,845,1004,1074,"p12ln2",100,190,280,315,405,460,505, //AH / GINA
-"p13ln1",100,140,232,302,386,468,557,600,"p13ln2","filler",149,250,334,373,503,644, //EL / AQUI
-"p14ln1","filler",148,250,305,390,476,570,653,779,938,"p14ln2",100,200,230,340,550,630, //PUES / AVISO
-"p15ln1",100,210,260,370,440,610,680,820,920,"p15ln2",100,148,209,347,507,545,695,750, //TODOS / SE
-"p16ln1",100,164,270,408,500,555,703,743,832,"p16ln2","filler",147,297,387,447,574,  //SIN / AMIGOS
-"p17ln1",100,157,263,324,467,650,755,865,911,"p17ln2",100,334,445, //ES  SORPRESA
-"p18ln1","filler",148,294,354,539,603,824,874,"p18ln2",100,204,314,390,435,560, //AMIGOS / ELMO
-"p19ln1",100,188,349,377,502,742,843,"p19ln2",100,158,334,385,477,586,636]; //GINA / ASI
-
+var startingPoints1 = [];
 
 var value1 = 0;      //THE VALUE INSIDE THE WORDS1 ARRAY
 
@@ -710,8 +689,12 @@ function main() {
  
 LION.resize();
 checkTimings();
+initializeText();
+initializeHotSpots();
 
-startingPoints1 = [100,177,227,280,344,425,576,630,734,"p1ln2",100,160,200,413,470,  //HOY / ES
+function initializeText() {
+	
+	startingPoints1 = [100,177,227,280,344,425,576,630,734,"p1ln2",100,160,200,413,470,  //HOY / ES
 "p2ln1",100,277,427,517,604,632,724,"p2ln2",100,296,370,473,630,660,760,830,930,978,  //ABELARDO / PLANEANDO
 "p3ln1",100,240,320,350,462,513,572,"p3ln2",100,160,288,323,372,460,510,695,765,   //PANCHO / DE
 "p4ln1", "ds",150,293,430,563,640,706,750,800,100,250,300,393,558,723,774, //--PANCHO  / PANCHO
@@ -752,9 +735,13 @@ context.font = "37px sesameIOS";
 
 if(LION.isIE)
 context.font = "37px sesameIOS";
+	
+	
+}
 
-
- if(window.innerWidth > window.innerHeight) {
+function initializeHotSpots() {
+	
+	if(window.innerWidth > window.innerHeight) {
  
 	hotSpot1.x = 800;
 	hotSpot6.x = 800;
@@ -764,11 +751,6 @@ context.font = "37px sesameIOS";
 			hotSpot6.width = 200;
 			hotSpot6.height = 250;
 			}
-		
-	
-	
-		
-
 }
 if(window.innerHeight > window.innerWidth) {
 
@@ -905,6 +887,16 @@ hotSpot6.width = 160;
 hotSpot6.height = 89;
 */
 
+	
+	
+	
+}
+
+
+
+
+
+ 
 
 window.setTimeout(main,24);
 context.clearRect(0,0,canvas.width,canvas.height);
@@ -916,6 +908,13 @@ context.clearRect(0,0,canvas.width,canvas.height);
 for(var j = 1; j < 21; j++)
 {
 pages[j].x = pages[j - 1].x + 1366;
+}
+
+//DRAWING THE IMAGES ONTO THE PAGE
+
+for(var k = 0; k < 21; k++)
+{
+context.drawImage(assetsToLoad[k + 2],pages[k].x,pages[k].y,pages[k].width,pages[k].height);
 }
 
 //MOVING PAGES LEFT
@@ -984,12 +983,7 @@ for(var i = 0; i < pages.length; i++)
 	}
 	
 
-//DRAWING THE IMAGES ONTO THE PAGE
 
-for(var k = 0; k < 21; k++)
-{
-context.drawImage(assetsToLoad[k + 2],pages[k].x,pages[k].y,pages[k].width,pages[k].height);
-}
 
 
 //CHECKING THE HOTSPOT VALUES
@@ -1164,13 +1158,6 @@ context.restore();
 
 }
 
-
-
-if(currentPage > 1)
-{
-//context.drawImage(dropDownImage,dropDown.x,dropDown.y,dropDown.width,dropDown.height);
-//context.drawImage(dropUpImage,dropUp.x,dropUp.y,dropUp.width,dropUp.height);
-}
 
 if(currentPage > 1)
 {
