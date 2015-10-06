@@ -686,9 +686,8 @@ window.addEventListener("mouseup",onMouseUp,false);
 function main() {
 
  
-	mouseDown = false;
+	//mouseDown = false;
 
- 
 	LION.resize();
 	checkTimings();
 	
