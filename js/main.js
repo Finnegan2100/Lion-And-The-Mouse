@@ -852,11 +852,10 @@ function onLoad()
 	
 	
 
-function main()  //MAIN LOOP
-{
+function main() {
 
  
- if(context.globalAlpha < 1) 
+ if (context.globalAlpha < 1) 
  mouseDown = false;
  
 LION.resize();
@@ -880,7 +879,6 @@ startingPoints1 = [100,177,227,280,344,425,576,630,734,"p1ln2",100,160,200,413,4
 "p16ln1",100,164,270,408,500,555,703,743,832,"p16ln2","filler",147,297,387,447,574,  //SIN / AMIGOS
 "p17ln1",100,157,263,324,467,650,755,865,911,"p17ln2",100,334,445, //ES  SORPRESA
 "p18ln1","filler",148,294,354,539,603,821,874,"p18ln2",100,204,314,390,435,560, //AMIGOS / ELMO
-
 "p19ln1",100,188,349,377,502,742,843,"p19ln2",100,158,334,385,477,586,636]; //GINA / ASI
 
 
@@ -1058,9 +1056,8 @@ hotSpot6.height = 89;
 */
 
 
-window.setTimeout(main,24);  //MAIN LOOP CALLS ITSELF RECURSIVELY
-context.clearRect(0,0,canvas.width,canvas.height); //CANVAS IS CLEARED EACH ITERATION
-
+window.setTimeout(main,24);
+context.clearRect(0,0,canvas.width,canvas.height);
 
 
 //SET EACH PAGE AT 980 PIXELS TO THE RIGHT OF THE ONE BEFORE IT
@@ -1137,12 +1134,6 @@ for(var i = 0; i < pages.length; i++)
 	}
 	
 
-	
-//DRAWING THE BACKGROUND
-
-//context.drawImage(backgroundImage,background.x,background.y,background.width,background.height);
-
-
 //DRAWING THE IMAGES ONTO THE PAGE
 
 for(var k = 0; k < 21; k++)
@@ -1159,10 +1150,7 @@ if(currentPage === 1 && moveLeft === false)
 	
 	context.drawImage(narradorOffImage,narradorOff.x,narradorOff.y,narradorOff.width,narradorOff.height);
 	context.drawImage(narradorOnImage,narradorOn.x,narradorOn.y,narradorOn.width,narradorOn.height);
-	
 
-
-	
 }
 
 if(currentPage === 1) {
@@ -1463,192 +1451,7 @@ context.drawImage(rightButtonHintImage,rightButtonHint.x,rightButtonHint.y,right
 context.font =  "37px sesame";
 
 
-
-		  
-//______________________________________COLLISION DETECTION___________________________________________________________________________________________
-//____________________________________________________________________________________________________________________________________________________
-  
-  //MOUSE COLLISION DETECTION
-  
-  
-   if(hitTestPoint(mouseX,mouseY,hotSpot1))  {
- 
-	      if(mouseDown === true && currentPage > 1 && currentPage < 21 && startFade === false && context.globalAlpha === 1)
-		  {
-		  pressedRight = true;
-		  context.drawImage(rightButtonPressedImage,rightButtonPressed.x,rightButtonPressed.y,rightButtonPressed.width,rightButtonPressed.height);
-		  }
-  }
-  
-  if(hitTestPoint(mouseX,mouseY,hotSpot2))  {
- 
-	      if(mouseDown === true && currentPage > 1 && context.globalAlpha === 1)
-		  {
-		  pressedHome = true;
-		  context.drawImage(endHomePressedImage,homePressed.x,homePressed.y,homePressed.width,homePressed.height);
-		  } 
-  }
-  
-  
-    if(hitTestPoint(mouseX,mouseY,hotSpot3))  {
- 
-		  if(mouseDown === true && currentPage === 1 && moveLeft === false && context.globalAlpha === 1)
-		  {
-		  onPressed = true;
-		  context.drawImage(narradorOnPressedImage,narradorOnPressed.x,narradorOnPressed.y,narradorOnPressed.width,narradorOnPressed.height);
-		  }
-		  if(mouseUp === true && currentPage === 1 && moveLeft === false && context.globalAlpha === 1)
-		  {
-		  context.drawImage(narradorOnImage,narradorOn.x,narradorOn.y,narradorOn.width,narradorOn.height);
-		  }
-  }
-  
-   if(hitTestPoint(mouseX,mouseY,hotSpot4))  {
- 
-		  if(mouseDown === true && currentPage === 1 && moveLeft === false && context.globalAlpha === 1)
-		  {
-		  offPressed = true;
-		  context.drawImage(narradorOffPressedImage,narradorOffPressed.x,narradorOffPressed.y,narradorOffPressed.width,narradorOffPressed.height);
-		  }	 
-		  if(mouseUp === true && currentPage === 1 && moveLeft === false)
-		  {
-		   context.drawImage(narradorOffImage,narradorOff.x,narradorOff.y,narradorOff.width,narradorOff.height);
-		  }
-  }
-  
-  //console.log(pages[20].x);
-   if(hitTestPoint(mouseX,mouseY,hotSpot5))  {
-   
-         //mike
-/*if(mouseDown === true && currentPage === 21 && context.globalAlpha === 1 && pages[20].x === 0 && !startFade)
-		  {
-		  pressedLeer++;
-		  //console.log("pressing leer");
-		  mouseDown = false;
-		  startFade = true;
-		  value1 = 0;
-		  }*/
-		  if(mouseDown === true && currentPage === 21 && !startFade)
-		  {
-		  startFade = true;
-		  value1 = 0;
-		  }
-  }
-  
-     if(hitTestPoint(mouseX,mouseY,hotSpot6))  {
- 
-	     if(mouseDown === true && startFade === false)
-		  {
-		  //window.focus();
-		  window.close();
-		  }
-  }
-  
- 
-  //
-  //
-  //TOUCH COLLISION DETECTION
-  //
-  //
-  
-  
-  if(hitTestPoint(tapX,tapY,hotSpot1))  {
- 
-	     if(touchDown === true && currentPage > 1 && currentPage < 21 && startFade === false && context.globalAlpha === 1)
-		  {
-		  pressedRight = true;
-		  context.drawImage(rightButtonPressedImage,rightButtonPressed.x,rightButtonPressed.y,rightButtonPressed.width,rightButtonPressed.height);
-		  }
-  }
-  
-  if(hitTestPoint(tapX,tapY,hotSpot2))  {
- 
-	      if(touchDown === true && currentPage > 1 && context.globalAlpha === 1)
-		  {
-		  pressedHome = true;
-		  context.drawImage(endHomePressedImage,homePressed.x,homePressed.y,homePressed.width,homePressed.height);
-		  value1 = 0;
-		  } 
-  }
-  
-  
-    if(hitTestPoint(tapX,tapY,hotSpot3))  {
- 
-		  if(touchDown === true && currentPage === 1 && moveLeft === false && context.globalAlpha === 1)
-		  {
-		  onPressed = true;
-		  context.drawImage(narradorOnPressedImage,narradorOnPressed.x,narradorOnPressed.y,narradorOnPressed.width,narradorOnPressed.height);
-		  }
-		  if(touchUp === true && currentPage === 1 && moveLeft === false && context.globalAlpha === 1)
-		  {
-		  context.drawImage(narradorOnImage,narradorOn.x,narradorOn.y,narradorOn.width,narradorOn.height);
-		  }
-  }
-  
-   if(hitTestPoint(tapX,tapY,hotSpot4))  {
- 
-		  if(touchDown === true && currentPage === 1 && moveLeft === false && context.globalAlpha === 1)
-		  {
-		  offPressed = true;
-		  context.drawImage(narradorOffPressedImage,narradorOffPressed.x,narradorOffPressed.y,narradorOffPressed.width,narradorOffPressed.height);
-		  }	 
-		  if(touchUp === true && currentPage === 1 && moveLeft === false && context.globalAlpha === 1)
-		  {
-		   context.drawImage(narradorOffImage,narradorOff.x,narradorOff.y,narradorOff.width,narradorOff.height);
-		  }
-  }
-  
-   if(hitTestPoint(tapX,tapY,hotSpot5))  {
-	//mike
-	      if(touchDown === true && currentPage === 21 && context.globalAlpha === 1)
-		  {
-		  startFade = true;
-		  value1 = 0;
-		  }
-  }
-  
-     if(hitTestPoint(tapX,tapY,hotSpot6))  {
- 
-	      if(touchDown === true && currentPage > 1 && startFade === false && context.globalAlpha === 1)
-		  {
-		  
-		  window.history.back();
-		  window.close();
+checkCollision();
 		  
 
-				if(LION.ios) 
-				{
-				
-				//context.fillStyle = "#000";
-				//context.font =  "37px sesame";
-				//context.fillText("fdsjfkdhajkfhlfjlks",100,120);
-				
-			
-				window.history.back();
-				window.open('','_self').close();
-				window.close();
-				
-				touchDown = false;
-				}
-			touchDown = false;
-		  
-		  }
-  }
-  
-
-	
-  }
- 
-
-function hitTestPoint(pointX, pointY, sprite)
-{  
-  var hit = pointX > sprite.left() && pointX < sprite.right() 
-  && pointY > sprite.top() && pointY < sprite.bottom();
-    
-  return hit;
 }
-
-
-	
-	
-
