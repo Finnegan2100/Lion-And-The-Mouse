@@ -1,110 +1,31 @@
 
-var canvas = document.getElementById("canvas");
-var context = canvas.getContext("2d");
+var canvas = document.getElementById("canvas"),
+	context = canvas.getContext("2d"),
+	
+	currentState = "loading",  
+	narratorOn = false,
 
-var currentState = "loading";      //CHECKING STATE OF HOT SPOT. IS IT LOADING,PLAYING,PAUSED OR READY TO RELOAD?
-
-var narratorOn = false;
-
-var assetsToLoad = [];
-var assetsLoaded = 0;
-
-var widths1 = [];
-var widths2 = [];
-
-var words1 = [];
-var words2 = [];
-
-var linePos1 = 619;
-var linePos2 = 649;
-var linePos3 = 679;
-var linePos4 = 709;
-var linePos5 = 739;
-
-
-var pressedTouch = false;
-var pressedLeer = 0;
-var tooLow = false;
-
-var vx = 0;
+	assetsToLoad = [],
+	widths1 = [],
+	pressedTouch = false,
+	
+	vx = 0;
 
 
 //TAKE BIG ARRAY OF WORDS:
 
-var bigText = "Hoy es un día muy especial en Plaza Sésamo.  ¡Es el cumpleaños de Elmo!  Abelardo, Pancho, Lola, Chip y Gina están  planeando una fiesta sorpresa y cada uno tiene su tarea.  Pancho está a cargo de las decoraciones.  De camino a su casa se encuentra con Elmo.  — Pancho, Pancho ¿Sabes qué día es hoy?  Pancho, un poco nervioso, pretende no entender.  — Hoy es... el día del baño de Elefancio y ¡ya se  me ha hecho tarde! Nos vemos luego, Elmo.  Pancho se va y Elmo queda desconcertado.  — Hoy cumple años Elmo y Pancho no se acordó.  Chip y Lola preparan una invitación para la fiesta  que enviarán por correo electrónico.  Elmo entra de repente.  — Chip, Lola, ¿saben qué día es hoy?  — Hoy es... día de hacer limpieza en el café. Y hay  MUCHO por hacer. ¡Luego nos vemos, Elmo!  Elmo no entiende qué ha pasado.  ¡A todos se les olvidó su cumpleaños!  Abelardo y Gina están horneando el pastel sorpresa.  Elmo entra sin ser visto. “¡Elmo huele un pastel!”   — Ah si, es para… ¡el primo de Gina! Y ya tenemos que irnos.  Gina saca a Elmo de la cocina.  El Café Clic está listo para la fiesta.  — ¡Aquí está el pastel! —canta Abelardo.  — ¡Pues ya está todo listo! Sólo falta... ¿Alguien le  avisó a Elmo? —pregunta Lola alarmada.  Todos se miran con asombro. ¡No pueden creer que  se les hubiese olvidado el invitado de honor!  Sin darse cuenta, Elmo ha entrado al Café Clic.  — Amigos, Elmo los estaba buscando.  ¡Es Elmo! Sin haberlo planeado, todos gritan al tiempo,  “¡SORPRESA! ¡FELÍZ CUMPLEAÑOS!”  — Amigos, ¡se acordaron del cumpleaños de Elmo!  ¡Elmo pensó que lo habían olvidado!  Gina empieza a cantar “Cumpleaños Feliz” y  así comienza ¡la gran fiesta de Elmo!";  
-
-//SPLIT THE BIGTEXT STRING INTO SENTENCES
+var bigText = "Hoy es un día muy especial en Plaza Sésamo.  ¡Es el cumpleaños de Elmo!  Abelardo, Pancho, Lola, Chip y Gina están  planeando una fiesta sorpresa y cada uno tiene su tarea.  Pancho está a cargo de las decoraciones.  De camino a su casa se encuentra con Elmo.  — Pancho, Pancho ¿Sabes qué día es hoy?  Pancho, un poco nervioso, pretende no entender.  — Hoy es... el día del baño de Elefancio y ¡ya se  me ha hecho tarde! Nos vemos luego, Elmo.  Pancho se va y Elmo queda desconcertado.  — Hoy cumple años Elmo y Pancho no se acordó.  Chip y Lola preparan una invitación para la fiesta  que enviarán por correo electrónico.  Elmo entra de repente.  — Chip, Lola, ¿saben qué día es hoy?  — Hoy es... día de hacer limpieza en el café. Y hay  MUCHO por hacer. ¡Luego nos vemos, Elmo!  Elmo no entiende qué ha pasado.  ¡A todos se les olvidó su cumpleaños!  Abelardo y Gina están horneando el pastel sorpresa.  Elmo entra sin ser visto. “¡Elmo huele un pastel!”   — Ah si, es para… ¡el primo de Gina! Y ya tenemos que irnos.  Gina saca a Elmo de la cocina.  El Café Clic está listo para la fiesta.  — ¡Aquí está el pastel! —canta Abelardo.  — ¡Pues ya está todo listo! Sólo falta... ¿Alguien le  avisó a Elmo? —pregunta Lola alarmada.  Todos se miran con asombro. ¡No pueden creer que  se les hubiese olvidado el invitado de honor!  Sin darse cuenta, Elmo ha entrado al Café Clic.  — Amigos, Elmo los estaba buscando.  ¡Es Elmo! Sin haberlo planeado, todos gritan al tiempo,  “¡SORPRESA! ¡FELÍZ CUMPLEAÑOS!”  — Amigos, ¡se acordaron del cumpleaños de Elmo!  ¡Elmo pensó que lo habían olvidado!  Gina empieza a cantar “Cumpleaños Feliz” y  así comienza ¡la gran fiesta de Elmo!"; 
 
 var sentences = bigText.split("  ");
-
-//ALSO SPLIT THE BIGTEXT STRING INTO WORDS:
-
 var words = bigText.split(" ");
 
-//DETERMINING THE WIDTH OF EACH WORD:
-
-for(var i = 0; i < words.length; i++)
-{
-context.fillStyle = "#000";
-widths1.push(context.measureText(words[i]).width);      //MEASURING THE LENGTH OF EACH WORD AND PUSHING IT INTO WIDTHS1
+for (var i = 0; i < words.length; i++) {
+	context.fillStyle = "#000";
+	widths1.push(context.measureText(words[i]).width);
 }
 
 
-//CREATING A GENERIC SPRITE OBJECT FROM WHICH GAME OBJECTS WILL BE INHERITED
-
-var spriteObject =
-{
-  sourceX: 0,
-  sourceY: 0,
-  sourceWidth: 64,
-  sourceHeight: 64,
-  width: 64,
-  height: 64,
-  x: 0,
-  y: 0,
-  vx: 0,
-  vy: 0,
- 
-      
-  //Getters
-  centerX: function()
-  {
-    return this.x + (this.width / 2);
-  },
-  centerY: function()
-  {
-    return this.y + (this.height / 2);
-  },
-  halfWidth: function()
-  {
-    return this.width / 2;
-  },
-  halfHeight: function()
-  {
-    return this.height / 2;
-  },
-  left: function()
-  {
-    return this.x;
-  },
-  right: function()
-  {
-    return this.x + this.width;
-  },
-  top: function()
-  {
-    return this.y;
-  },
-  bottom: function()
-  {
-    return this.y + this.height;
-  }
-  
-};
-
-
-
-var POP = {
+var LION = {
 
     WIDTH: 1366,  //WIDTH + HEIGHT are only used as values for determining the ratio. CurrentWidth/CurrentHeight are used for the resizing
     HEIGHT:  667, 
@@ -114,10 +35,8 @@ var POP = {
     currentHeight:  null,
 
     init: function() {
-
-			
-	POP.RATIO = POP.WIDTH / POP.HEIGHT;    //SETS THE W/H RATIO (2.04) TO KEEP THE GAME CORRECTLY SIZED 
-	
+		
+		LION.RATIO = LION.WIDTH / LION.HEIGHT;    //SETS THE W/H RATIO (2.04) TO KEEP THE GAME CORRECTLY SIZED 
 	},
 
 
@@ -125,187 +44,101 @@ var POP = {
 	
 	   if(window.innerWidth > window.innerHeight) {
 	       
-			POP.currentHeight = window.innerHeight; //Repeat the assigments from init every call to resize 
-			POP.currentWidth = POP.currentHeight * POP.RATIO;
+			LION.currentHeight = window.innerHeight; //Repeat the assigments from init every call to resize 
+			LION.currentWidth = LION.currentHeight * LION.RATIO;
 			
 			
-			canvas.style.width = (POP.currentWidth / 1.5352) + 'px';
-			canvas.style.height = POP.currentHeight + 'px';
+			canvas.style.width = (LION.currentWidth / 1.5352) + 'px';
+			canvas.style.height = LION.currentHeight + 'px';
 			canvas.style.marginTop = 0 + "px";
 			
 			if(canvas.style.height === 320 + 'px') {
-			canvas.style.marginLeft = 80 + "px";
+				canvas.style.marginLeft = 80 + "px";
 			}
 			if(canvas.style.height === 268 + 'px') {
-			canvas.style.marginLeft = 100 + "px";
+				canvas.style.marginLeft = 100 + "px";
 			}
 			if(window.innerWidth === 480) {
-			canvas.style.marginLeft = 30 + "px";
-			page1.height = 1468;
+				canvas.style.marginLeft = 30 + "px";
+				page1.height = 1468;
 			}
 			
-			POP.scale = POP.currentWidth / POP.WIDTH;
+			LION.scale = LION.currentWidth / LION.WIDTH;
 		}
 		
 		
 		if(window.innerHeight > window.innerWidth) {
-		
-		    //console.log(POP.RATIO);
-		    //console.log("starting in portrait");
 			
 			canvas.style.width = window.innerWidth + 'px';
 			
-			POP.scale = POP.currentWidth / POP.WIDTH;
+			LION.scale = LION.currentWidth / LION.WIDTH;
 			
 		    if(window.innerWidth === 768) {		//IPAD
 			canvas.style.height = 672 + 'px';
 			canvas.style.marginTop = 130 + "px";
-			POP.currentWidth = 1376 + 'px';
+			LION.currentWidth = 1376 + 'px';
 			}
 			if(window.innerWidth === 320) {		//IPHONE  && IPOD
 				
-				if(window.innerHeight === 529) {  //IPHONE
-				canvas.style.height = 320 + 'px';
-				POP.currentWidth = 655.35 + 'px';
-				canvas.style.marginTop = 50 + "px";
-				canvas.style.marginLeft = 0 + "px";
+				if (window.innerHeight === 529) {  //IPHONE
+				
+					canvas.style.height = 320 + 'px';
+					LION.currentWidth = 655.35 + 'px';
+					canvas.style.marginTop = 50 + "px";
+					canvas.style.marginLeft = 0 + "px";
 				}
 				
-				//if(window.innerHeight === 392) {
-			    //canvas.style.height = 500 + 'px';
-				//}
+				if (window.innerHeight === 356) {    //IPOD
 				
-				//if(window.innerheight === 416) {
-				//canvas.style.height = 700 + 'px';
-				//}
-				
-				if(window.innerHeight === 356) {    //IPOD
-				canvas.style.marginTop = 30 + "px";
-				canvas.style.height = 300 + 'px';
-				POP.currentWidth = 455.35 + 'px';
-				canvas.style.marginLeft = 0 + "px";
-				page1.height = 1468;
+					canvas.style.marginTop = 30 + "px";
+					canvas.style.height = 300 + 'px';
+					LION.currentWidth = 455.35 + 'px';
+					canvas.style.marginLeft = 0 + "px";
+					page1.height = 1468;
 				}
-				
-				
-				
-				
-			}
-			if(window.innerWidth === 360) {		//GALAXY S3,S4,S5
-			canvas.style.height = 287 + 'px';
-			canvas.style.marginTop = 95 + "px";
-			POP.currentWidth = 587.769;
-			}
-			if(window.innerWidth === 600) {		//NEXUS 7
-			canvas.style.height = 431 + 'px';
-			canvas.style.marginTop = 125 + "px";
-			POP.currentWidth = 882.677;
-			}
-			if(window.innerWidth === 601) {		//TAB 4
-			canvas.style.height = 431 + 'px';
-			canvas.style.marginTop = 135 + "px";
-			POP.currentWidth = 892.677;
-			}
-			if(window.innerWidth === 800) {		//NEXUS 10
-			canvas.style.height = 631 + 'px';
-			canvas.style.marginTop = 175 + "px";
-			POP.currentWidth = 1292.272;
-			}
-			if(window.innerWidth === 384) {		//OPTIMUS G
-			canvas.style.height = 311 + 'px';
-			canvas.style.marginTop = 90 + "px";
-			POP.currentWidth = 636.920;
 			}
 			
-			
-			//*************NOT STARTING IN PORTRAIT BECAUSE POP.currentWidth is undefined.
-		
-			//POP.currentHeight = window.innerHeight; //Repeat the assignments from init every call to resize 
-			//POP.currentWidth = POP.currentHeight * POP.RATIO;
-			
-			
-		
-			//POP.scale = POP.currentWidth / POP.WIDTH; 
-
-			/*
-			canvas.style.width = (POP.currentWidth / 1.5352) + 'px';  
-			canvas.style.marginTop = 150 + "px";
-			
-			if(canvas.style.height === 679 + 'px') {		//IPAD
-			canvas.style.width = (POP.currentWidth / 1.78) + 'px';
-			canvas.style.marginTop = 130 + "px";
+			if (window.innerWidth === 360) {		//GALAXY S3,S4,S5
+				canvas.style.height = 287 + 'px';
+				canvas.style.marginTop = 95 + "px";
+				LION.currentWidth = 587.769;
 			}
-			if(canvas.style.height === 672 + 'px') {		//IPAD
-			canvas.style.width = (POP.currentWidth / 1.78) + 'px';
-			canvas.style.marginTop = 130 + "px";
+			if (window.innerWidth === 600) {		//NEXUS 7
+				canvas.style.height = 431 + 'px';
+				canvas.style.marginTop = 125 + "px";
+				LION.currentWidth = 882.677;
 			}
-			if(canvas.style.height === 320 + 'px') {      //IPHONE
-			canvas.style.width = (POP.currentWidth / 1.99) + 'px';
-			canvas.style.marginTop = 85 + "px";
-			canvas.style.marginLeft = -10 + "px";
+			if (window.innerWidth === 601) {		//TAB 4
+				canvas.style.height = 431 + 'px';
+				canvas.style.marginTop = 135 + "px";
+				LION.currentWidth = 892.677;
 			}
-			if(canvas.style.height === 276 + 'px') {      //IPHONE
-			canvas.style.width = (POP.currentWidth / 1.70) + 'px';
-			canvas.style.marginTop = 75 + "px";
-			canvas.style.marginLeft = -10 + "px";
+			if (window.innerWidth === 800) {		//NEXUS 10
+				canvas.style.height = 631 + 'px';
+				canvas.style.marginTop = 175 + "px";
+				LION.currentWidth = 1292.272;
 			}
-			if(canvas.style.height === 287 + 'px') {    				//SAMSUNG GALAXY
-			canvas.style.width = (POP.currentWidth / 1.60) + 'px';
-			canvas.style.marginTop = 95 + "px";
+			if (window.innerWidth === 384) {		//OPTIMUS G
+				canvas.style.height = 311 + 'px';
+				canvas.style.marginTop = 90 + "px";
+				LION.currentWidth = 636.920;
 			}
-			if(canvas.style.height === 311 + 'px') {    				//SAMSUNG GALAXY
-			canvas.style.width = (POP.currentWidth / 1.68) + 'px';
-			canvas.style.marginTop = 95 + "px";
-			}
-			if(canvas.style.height === 688 + 'px') {    				//SAMSUNG GALAXY TAB PRO
-			canvas.style.width = (POP.currentWidth / 1.78) + 'px';
-			canvas.style.marginTop = 185 + "px";
-			}
-			if(canvas.style.height === 640 + 'px') {    				//NEXUS 10
-			canvas.style.width = (POP.currentWidth / 1.66) + 'px';
-			canvas.style.marginTop = 185 + "px";
-			}
-			*/
-			
-			//if(POP.ios) {
-			//canvas.style.width = (POP.currentWidth / 1.7852) + 'px';
-			//}
 		}
-		
         window.setTimeout(function() {
                 window.scrollTo(0,1);
-        }, 1);
-		
+        }, 1);	
     }
-	
 };
 
-POP.Input = {
-
-    x: 0,
-    y: 0,
-    tapped :false,
-
-    set: function(data) {
-        this.x = data.pageX;
-        this.y = data.pageY;
-        this.tapped = true; 
-    }
-
-};
-
-
-
-
-POP.ua = navigator.userAgent.toLowerCase();
-POP.android = POP.ua.indexOf('android') > -1 ? true : false;
-POP.ios = ( POP.ua.indexOf('iphone') > -1 || POP.ua.indexOf('ipad') > -1  ) ? 
+LION.ua = navigator.userAgent.toLowerCase();
+LION.android = LION.ua.indexOf('android') > -1 ? true : false;
+LION.ios = ( LION.ua.indexOf('iphone') > -1 || LION.ua.indexOf('ipad') > -1  ) ? 
     true : false;
-POP.isFirefox = typeof InstallTrigger !== 'undefined';  
-POP.isMac = navigator.platform.toUpperCase().indexOf('MAC')>=0;
-POP.isSafari = Object.prototype.toString.call(window.HTMLElement).indexOf('Constructor') > 0;
-POP.isChrome = !!window.chrome;             
-POP.isIE = /*@cc_on!@*/false || !!document.documentMode; 
+LION.isFirefox = typeof InstallTrigger !== 'undefined';  
+LION.isMac = navigator.platform.toUpperCase().indexOf('MAC')>=0;
+LION.isSafari = Object.prototype.toString.call(window.HTMLElement).indexOf('Constructor') > 0;
+LION.isChrome = !!window.chrome;             
+LION.isIE = /*@cc_on!@*/false || !!document.documentMode; 
  
  var loadingColor = Object.create(spriteObject);
 loadingColor.x = 300;
@@ -889,8 +722,8 @@ event.preventDefault();
 
 function onMouseMove(event)			//TRACKING THE MOUSE X AND Y VALUES
 { 
- mouseX = (event.pageX - canvas.offsetLeft) / POP.scale; 
- mouseY = (event.pageY - canvas.offsetTop) / POP.scale;
+ mouseX = (event.pageX - canvas.offsetLeft) / LION.scale; 
+ mouseY = (event.pageY - canvas.offsetTop) / LION.scale;
  event.preventDefault(); 
 }
 
@@ -900,8 +733,8 @@ function onMouseMove(event)			//TRACKING THE MOUSE X AND Y VALUES
 function onTouchMove(event)			//TRACKING THE TOUCH X AND Y VALUES
 { 
 /*
-  tapX = (event.targetTouches[0].pageX - canvas.offsetLeft) / POP.scale;
-  tapY = (event.targetTouches[0].pageY - canvas.offsetTop) / POP.scale ;
+  tapX = (event.targetTouches[0].pageX - canvas.offsetLeft) / LION.scale;
+  tapY = (event.targetTouches[0].pageY - canvas.offsetTop) / LION.scale ;
   event.preventDefault(); 
   */
 }
@@ -973,8 +806,8 @@ function onLoad()
 
 	function touchMove(event) {
 	
-	   tapX = (event.targetTouches[0].pageX - canvas.offsetLeft) / POP.scale;
-	  tapY = (event.targetTouches[0].pageY - canvas.offsetTop) / POP.scale ;
+	   tapX = (event.targetTouches[0].pageX - canvas.offsetLeft) / LION.scale;
+	  tapY = (event.targetTouches[0].pageY - canvas.offsetTop) / LION.scale ;
 		event.preventDefault();
 		if ( event.touches.length === 1 ) {
 			curX = event.touches[0].pageX;
@@ -983,8 +816,8 @@ function onLoad()
 			touchCancel(event);
 		}
 		
-  tapX = (event.targetTouches[0].pageX - canvas.offsetLeft) / POP.scale;
-  tapY = (event.targetTouches[0].pageY - canvas.offsetTop) / POP.scale ;
+  tapX = (event.targetTouches[0].pageX - canvas.offsetLeft) / LION.scale;
+  tapY = (event.targetTouches[0].pageY - canvas.offsetTop) / LION.scale ;
 	}
 	
 	function touchEnd(event) {
@@ -1070,8 +903,8 @@ function onLoad()
    
    
 	
-	POP.init();
-	POP.resize();
+	LION.init();
+	LION.resize();
 	
 	
 	
@@ -1083,7 +916,7 @@ function main()  //MAIN LOOP
  if(context.globalAlpha < 1) 
  mouseDown = false;
  
-POP.resize();
+LION.resize();
 checkTimings();
 
 startingPoints1 = [100,177,227,280,344,425,576,630,734,"p1ln2",100,160,200,413,470,  //HOY / ES
@@ -1111,22 +944,22 @@ startingPoints1 = [100,177,227,280,344,425,576,630,734,"p1ln2",100,160,200,413,4
 //WRITING THE TEXT
 context.fillStyle = "#333";
 
-if(POP.isMac && POP.isChrome) 
+if(LION.isMac && LION.isChrome) 
 context.font =  "37px sesame";
 
-if(!POP.ios && !POP.isMac)
+if(!LION.ios && !LION.isMac)
 context.font =  "bold 37px sesame";
 
-if(POP.isFirefox)
+if(LION.isFirefox)
 context.font =  "37px sesame";
 
-if(POP.isSafari)
+if(LION.isSafari)
 context.font =  "37px sesame";
 
-if(POP.ios)
+if(LION.ios)
 context.font = "37px sesameIOS";
 
-if(POP.isIE)
+if(LION.isIE)
 context.font = "37px sesameIOS";
 
 
@@ -1573,7 +1406,7 @@ context.drawImage(homeImage,home.x,home.y,home.width,home.height);
 
 
 
-if (POP.android || POP.ios || POP.isIE) {
+if (LION.android || LION.ios || LION.isIE) {
 context.drawImage(xButtonImage,xButton.x,xButton.y,xButton.width,xButton.height);
 }
 
@@ -1708,8 +1541,8 @@ context.fillText("canvas.style.width: " + canvas.style.width,100,310);
 context.fillText("canvas.style.height: " + canvas.style.height,100,340);
 
 
-context.fillText("currentWidth: " + POP.currentWidth,100,190);
-context.fillText("currentHeight: " + POP.currentHeight,100,220);
+context.fillText("currentWidth: " + LION.currentWidth,100,190);
+context.fillText("currentHeight: " + LION.currentHeight,100,220);
 context.fillText("window.innerWidth: " + window.innerWidth,100,250);
 context.fillText("window.innerHeight: " + window.innerHeight,100,280);
 context.fillText("canvas.style.width: " + canvas.style.width,100,310);
@@ -1884,7 +1717,7 @@ context.fillText("start fade: " + startFade,100,520);
 		  window.close();
 		  
 
-				if(POP.ios) 
+				if(LION.ios) 
 				{
 				
 				//context.fillStyle = "#000";
@@ -1982,4 +1815,6 @@ function hitTestPoint(pointX, pointY, sprite)
 	
 
 }());
+	
+	
 
