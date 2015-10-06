@@ -361,8 +361,6 @@ var checkingLoads = 0;
 
 var passedPageOne = false;
 
- //checkCurrentState();
-
 
 
 //ARRAY OF STARTING X VALUES FOP EACH WORD
@@ -1360,25 +1358,15 @@ context.drawImage(xButtonImage,xButton.x,xButton.y,xButton.width,xButton.height)
 
 
 
-if(startFade === true)
-{
-		//  if(context.globalAlpha > 0.1)
-		//  {
-		  fadeOut();
-		 // }
-		  
-		 // if(context.globalAlpha <= 0.2)
-		  //{
-		  //context.globalAlpha = 0;
-		  context.globalAlpha -= 0.1;
-		  
-		  currentPage = 1;
-		  startFade = false;
-		  vo.pause();
-		  offPressed = false;
-		  onPressed = false;
-		  
-		  //}
+if (startFade === true) {
+	
+	fadeOut();
+	context.globalAlpha -= 0.1;
+	currentPage = 1;
+	startFade = false;
+	vo.pause();
+	offPressed = false;
+	onPressed = false;
 }
     
 	  
@@ -1474,41 +1462,7 @@ context.drawImage(rightButtonHintImage,rightButtonHint.x,rightButtonHint.y,right
  context.fillStyle = "#000";
 context.font =  "37px sesame";
 
-//context.fillText(hotSpot6.x,100,190);
-//context.fillText(hotSpot6.y,100,230);
 
-/*
-context.fillText("right pressed" + pressedRight,100,190);
-context.fillText("leer pressed: " + pressedLeer,100,220);
-context.fillText("window.innerWidth: " + window.innerWidth,100,250);
-context.fillText("window.innerHeight: " + window.innerHeight,100,280);
-context.fillText("canvas.style.width: " + canvas.style.width,100,310);
-context.fillText("canvas.style.height: " + canvas.style.height,100,340);
-
-
-context.fillText("currentWidth: " + LION.currentWidth,100,190);
-context.fillText("currentHeight: " + LION.currentHeight,100,220);
-context.fillText("window.innerWidth: " + window.innerWidth,100,250);
-context.fillText("window.innerHeight: " + window.innerHeight,100,280);
-context.fillText("canvas.style.width: " + canvas.style.width,100,310);
-context.fillText("canvas.style.height: " + canvas.style.height,100,340);
-
-context.fillText("tap X" + tapX,100,530);
-context.fillText("tap Y" + tapY,100,560);
-context.fillText("hotSpot6x: " + hotSpot6.x,100,450);
-context.fillText("hotSpot6y: " + hotSpot6.y,100,490);
-*/
-
-
-
-//context.fillText(tapX,100,400);
-//context.fillText(tapY,100,440);
-/*
-context.fillText("hotSpot 6.x:" +  hotSpot6.x,100,440);
-context.fillText("alpha " + context.globalAlpha,100,480);
-//context.fillStyle = "#fff";
-context.fillText("start fade: " + startFade,100,520);
-*/
 
 		  
 //______________________________________COLLISION DETECTION___________________________________________________________________________________________
@@ -1694,72 +1648,7 @@ function hitTestPoint(pointX, pointY, sprite)
   return hit;
 }
 
-(function checkCurrentState() 
-{
-  
-    if(mainCalled === false)
-	{
-	window.setTimeout(checkCurrentState,24);
-	console.log(currentState);
-	//context.clearRect(0,0,canvas.width,canvas.height);
-	switch(currentState)
-	{
-	case "loading":		//DRAW THE LOADING ICON
 
-	
-	
-    //increment = assetsToLoad.length / 100;	
-	//percentage = checkingLoads / 100;
-	
-	var loadingWhiteX = 449,
-	loadingWhiteY = 198,
-	loadingWhiteWidth = 530,
-	loadingWhiteHeight = 200;
-
-	var loadingWhiteImage = new Image();
-	loadingWhiteImage.src = "images/loading-white.png";
-
-			
-    context.drawImage(loadingWhiteImage,loadingWhiteX,loadingWhiteY,loadingWhiteWidth,loadingWhiteHeight);
-    increment = assetsToLoad.length / 100;	
-	percentage = checkingLoads / 100;
-	
-	var	loadingColorX = 300,
-		loadingColorY = 200,
-		loadingColorWidth = 530,
-		loadingColorHeight = 200;
-	var	loadingColorImage = new Image();
-		loadingColorImage.src = "images/loading-color.png";
-		
-		
-	
-	context.drawImage(loadingColorImage,1,loadingColorImage.height - loadingColorImage.height * percentage,
-	loadingColorImage.width,
-	loadingColorImage.height * percentage,
-	449,
-	399 - loadingColorImage.height * percentage,
-	loadingColorImage.width,
-	loadingColorImage.height * percentage
-	);
-	
-		
-	if(percentage > .37)  //change back to .37
-	{
-
-	 currentState = "play";
-	}
-    break;
-	
-	case "play":       //DRAW THE GREEN ARROW
-	main();
-	mainCalled = true;
-	break;
-	}
-	
-	}
-	
-
-}());
 	
 	
 
