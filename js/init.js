@@ -43,6 +43,11 @@ context.font = "37px sesameIOS";
 
 if(LION.isIE)
 context.font = "37px sesameIOS";
+
+for (var i = 0; i < words.length; i++) {
+	context.fillStyle = "#000";
+	widths1.push(context.measureText(words[i]).width);
+}
 	
 	
 }

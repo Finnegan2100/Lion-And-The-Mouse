@@ -1,23 +1,5 @@
 function movePages() {	
 	
-if (currentPage > 1 && currentPage < 21 && narratorOn === true && paused === false) {
-
-		context.save();
-		context.globalAlpha = .8;
-
-		if(yPos === 564)
-			context.fillStyle = "#ebebeb";
-
-		if(yPos === 624)
-			context.fillStyle = "#dcdcdc";
-
-		context.globalAlpha = .7;
-		context.fillStyle = "#ff2841";
-		context.fillText(words[value1],startingPoints1[value1],yPos);
-		context.restore();
-	}		
-	
-	
 //MOVING PAGES LEFT
 
 
@@ -83,10 +65,5 @@ for(var i = 0; i < pages.length; i++)
 	}
 	
 
-
-
-
-
-	
-	
 }
+

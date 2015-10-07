@@ -9,15 +9,37 @@ var canvas = document.getElementById("canvas"),
 	widths1 = [],
 	pressedTouch = false,
 	
-	vx = 0;
+	vx = 0,
+	mouseX = 0,
+	mouseY = 0,
+	tapX,	
+	tapY,
+	EASING = 0.18,
+	mouseDown = false,
+	touchDown = false, 
+	mouseUp = false, 
+	touchUp = false,
+	onPressed = false,
+	offPressed = false,
+	currentPage = 1,
+	pages = [],
+	moveLeft = false,
+	moveRight = false,
+	pressedHome = false,
+	pressedRight = false,
+	paused = false,
+	percentage = 0.01,
+	increment = .039,
+	mainCalled = false,
+	checkingLoads = 0,
+	
+	startingPoints1 = [],
+	value1 = 0, 
+	yPos = 564,
 
-
-
-var bigText;
-var sentences;
-var words;
-
-
+	bigText = "Hoy es un día muy especial en Plaza Sésamo.  ¡Es el cumpleaños de Elmo!  Abelardo, Pancho, Lola, Chip y Gina están  planeando una fiesta sorpresa y cada uno tiene su tarea.  Pancho está a cargo de las decoraciones.  De camino a su casa se encuentra con Elmo.  — Pancho, Pancho ¿Sabes qué día es hoy?  Pancho, un poco nervioso, pretende no entender.  — Hoy es... el día del baño de Elefancio y ¡ya se  me ha hecho tarde! Nos vemos luego, Elmo.  Pancho se va y Elmo queda desconcertado.  — Hoy cumple años Elmo y Pancho no se acordó.  Chip y Lola preparan una invitación para la fiesta  que enviarán por correo electrónico.  Elmo entra de repente.  — Chip, Lola, ¿saben qué día es hoy?  — Hoy es... día de hacer limpieza en el café. Y hay  MUCHO por hacer. ¡Luego nos vemos, Elmo!  Elmo no entiende qué ha pasado.  ¡A todos se les olvidó su cumpleaños!  Abelardo y Gina están horneando el pastel sorpresa.  Elmo entra sin ser visto. “¡Elmo huele un pastel!”   — Ah si, es para… ¡el primo de Gina! Y ya tenemos que irnos.  Gina saca a Elmo de la cocina.  El Café Clic está listo para la fiesta.  — ¡Aquí está el pastel! —canta Abelardo.  — ¡Pues ya está todo listo! Sólo falta... ¿Alguien le  avisó a Elmo? —pregunta Lola alarmada.  Todos se miran con asombro. ¡No pueden creer que  se les hubiese olvidado el invitado de honor!  Sin darse cuenta, Elmo ha entrado al Café Clic.  — Amigos, Elmo los estaba buscando.  ¡Es Elmo! Sin haberlo planeado, todos gritan al tiempo,  “¡SORPRESA! ¡FELÍZ CUMPLEAÑOS!”  — Amigos, ¡se acordaron del cumpleaños de Elmo!  ¡Elmo pensó que lo habían olvidado!  Gina empieza a cantar “Cumpleaños Feliz” y  así comienza ¡la gran fiesta de Elmo!", 
+	sentences = bigText.split("  "),
+	words = bigText.split(" ");
 
  var loadingColor = Object.create(spriteObject);
 loadingColor.x = 300;
@@ -28,18 +50,15 @@ loadingColor.height = 200;
 var loadingColorImage = new Image();
 loadingColorImage.src = "images/loading-color.png";
 
+var loadingWhiteImage = new Image();
+loadingWhiteImage.src = "images/loading-white.png";
+
 var loadingWhite = Object.create(spriteObject);
 loadingWhite.x = 449;
 loadingWhite.y = 198;
 loadingWhite.width = 530;
 loadingWhite.height = 200;
 
-var loadingWhiteImage = new Image();
-loadingWhiteImage.src = "images/loading-white.png";
- 
-
-
-	
 var xButton = Object.create(spriteObject);
 xButton.x = 1300;
 xButton.y = 15;
@@ -193,57 +212,12 @@ hotSpot6.y = 5;
 hotSpot6.width = 110;
 hotSpot6.height = 69;
 
-var mouseX = 0;		//DEFINING MOUSE X AND Y VALUES
-var mouseY = 0;
-
-var tapX = undefined;		//DEFINING TOUCH X AND Y VALUES (FOR TAPPING)
-var tapY = undefined;
-
-var EASING = 0.18;
-
-var mouseDown = false;  //BOOLEAN FOR CHECKING IF MOUSE IS DOWN 
-var touchDown = false;  //BOOLEAN FOR CHECKING IF TOUCH IS DOWN 
-var mouseUp = false;  //BOOLEAN FOR CHECKING IF MOUSE IS UP 
-var touchUp = false;  //BOOLEAN FOR CHECKING IF TOUCH IS UP 
-
-var onPressed = false;
-var offPressed = false;
-
-
-var currentPage = 1;
-
-var pages = [];
-
-var moveLeft = false;
-var moveRight = false;
-
-var pressedHome = false;
-var pressedRight = false;
-
-
-var ratio = 0;
-var paused = false;
-
-var percentage = 0.01;
-var increment = .039;
-
-var checkingLoads = 0;
-
-var mainCalled = false;
-var checkingLoads = 0;
-
-var passedPageOne = false;
 
 
 
-//ARRAY OF STARTING X VALUES FOP EACH WORD
-
-var startingPoints1 = [];
-
-var value1 = 0;      //THE VALUE INSIDE THE WORDS1 ARRAY
 
 
-var yPos = 564;
+
 
 
 //LOADING THE IMAGES AND CALLING LOAD EVENT
@@ -554,122 +528,6 @@ window.addEventListener("mouseup",onMouseUp,false);
 		renderPageText();
 		checkCollision();
 		renderUI();
+	
 	}
-	
-function initializeTextContent() {
-	
-	bigText = "Hoy es un día muy especial en Plaza Sésamo.  ¡Es el cumpleaños de Elmo!  Abelardo, Pancho, Lola, Chip y Gina están  planeando una fiesta sorpresa y cada uno tiene su tarea.  Pancho está a cargo de las decoraciones.  De camino a su casa se encuentra con Elmo.  — Pancho, Pancho ¿Sabes qué día es hoy?  Pancho, un poco nervioso, pretende no entender.  — Hoy es... el día del baño de Elefancio y ¡ya se  me ha hecho tarde! Nos vemos luego, Elmo.  Pancho se va y Elmo queda desconcertado.  — Hoy cumple años Elmo y Pancho no se acordó.  Chip y Lola preparan una invitación para la fiesta  que enviarán por correo electrónico.  Elmo entra de repente.  — Chip, Lola, ¿saben qué día es hoy?  — Hoy es... día de hacer limpieza en el café. Y hay  MUCHO por hacer. ¡Luego nos vemos, Elmo!  Elmo no entiende qué ha pasado.  ¡A todos se les olvidó su cumpleaños!  Abelardo y Gina están horneando el pastel sorpresa.  Elmo entra sin ser visto. “¡Elmo huele un pastel!”   — Ah si, es para… ¡el primo de Gina! Y ya tenemos que irnos.  Gina saca a Elmo de la cocina.  El Café Clic está listo para la fiesta.  — ¡Aquí está el pastel! —canta Abelardo.  — ¡Pues ya está todo listo! Sólo falta... ¿Alguien le  avisó a Elmo? —pregunta Lola alarmada.  Todos se miran con asombro. ¡No pueden creer que  se les hubiese olvidado el invitado de honor!  Sin darse cuenta, Elmo ha entrado al Café Clic.  — Amigos, Elmo los estaba buscando.  ¡Es Elmo! Sin haberlo planeado, todos gritan al tiempo,  “¡SORPRESA! ¡FELÍZ CUMPLEAÑOS!”  — Amigos, ¡se acordaron del cumpleaños de Elmo!  ¡Elmo pensó que lo habían olvidado!  Gina empieza a cantar “Cumpleaños Feliz” y  así comienza ¡la gran fiesta de Elmo!";
-	sentences = bigText.split("  ");
-	words = bigText.split(" ");
 
-	for (var i = 0; i < words.length; i++) {
-		context.fillStyle = "#000";
-		widths1.push(context.measureText(words[i]).width);
-	}
-}	
-
-function renderPageText() {
-	
-	if(currentPage > 1 && currentPage < 21) {
-
-
-switch(currentPage)
-{
-case 2:
-context.fillText(sentences[0],100,564);
-context.fillText(sentences[1],100,624);
-break;
-
-case 3:
-context.fillText(sentences[2],100,564);
-context.fillText(sentences[3],100,624);
-break;
-
-case 4:
-context.fillText(sentences[4],100,564);
-context.fillText(sentences[5],100,624);
-break;
-
-case 5:
-context.fillText(sentences[6],100,564);
-context.fillText(sentences[7],100,624);
-break;
-
-case 6:
-context.fillText(sentences[8],100,564);
-context.fillText(sentences[9],100,624);
-break;
-
-case 7:
-context.fillText(sentences[10],100,564);
-context.fillText(sentences[11],100,624);
-break;
-
-case 8:
-context.fillText(sentences[12],100,564);
-context.fillText(sentences[13],100,624);
-break;
-
-case 9:
-context.fillText(sentences[14],100,564);
-context.fillText(sentences[15],100,624);
-break;
-
-case 10:
-context.fillText(sentences[16],100,564);
-context.fillText(sentences[17],100,624);
-break;
-
-case 11:
-context.fillText(sentences[18],100,564);
-context.fillText(sentences[19],100,624);
-break;
-
-case 12:
-context.fillText(sentences[20],100,564);
-context.fillText(sentences[21],100,624);
-break;
-
-case 13:
-context.fillText(sentences[22],100,564);
-context.fillText(sentences[23],100,624);
-break;
-
-case 14:
-context.fillText(sentences[24],100,564);
-context.fillText(sentences[25],100,624);
-break;
-
-case 15:
-context.fillText(sentences[26],100,564);
-context.fillText(sentences[27],100,624);
-break;
-
-case 16:
-context.fillText(sentences[28],100,564);
-context.fillText(sentences[29],100,624);
-break;
-
-case 17:
-context.fillText(sentences[30],100,564);
-context.fillText(sentences[31],100,624);
-break;
-
-case 18:
-context.fillText(sentences[32],100,564);
-context.fillText(sentences[33],100,624);
-break;
-
-case 19:
-context.fillText(sentences[34],100,564);
-context.fillText(sentences[35],100,624);
-break;
-
-case 20:
-context.fillText(sentences[36],100,564);
-context.fillText(sentences[37],100,624);
-break;
-}
-
-}
-}
