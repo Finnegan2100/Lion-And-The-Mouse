@@ -1,8 +1,8 @@
 
 
-window.addEventListener("mousemove",onMouseMove,false);
-window.addEventListener("mousedown",onMouseDown,false);
-window.addEventListener("mouseup",onMouseUp,false);
+addEventListener("mousemove",onMouseMove,false);
+addEventListener("mousedown",onMouseDown,false);
+addEventListener("mouseup",onMouseUp,false);
 
 
 function onMouseDown(event) {
