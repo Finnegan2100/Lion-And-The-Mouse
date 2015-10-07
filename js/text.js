@@ -1,7 +1,6 @@
 function renderPageText() {
 	
 	if(currentPage > 1 && currentPage < 21){
-
 		switch(currentPage) {
 		
 			case 2:

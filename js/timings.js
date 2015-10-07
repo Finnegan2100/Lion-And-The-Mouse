@@ -1,44 +1,35 @@
 
-function checkTimings()
-{
+function checkTimings() {
 
-if(paused === true)
-{
-vo.pause();
+if (paused === true) {
+	vo.pause();
 }
-
 
 //SYNCING PAGE 1
 
-if(pages[1].x < 1366 && pages[1].x > 0 && currentPage === 1 && paused === true)
-{
-vo.currentTime = 1.85;
+if (pages[1].x < 1366 && pages[1].x > 0 && currentPage === 1 && paused === true) {
+	vo.currentTime = 1.85;
 }
-if(pages[1].x > -1366 && pages[1].x < 0 && currentPage === 3 && paused === true)
-{
-vo.currentTime = 1.85;
+if (pages[1].x > -1366 && pages[1].x < 0 && currentPage === 3 && paused === true) {
+	vo.currentTime = 1.85;
 }
 
 //SYNCING PAGE 2
 
-if(pages[1].x < 0 && pages[1].x > -1366 && currentPage === 2 && paused === true)
-{
-vo.currentTime = 7.65;
+if (pages[1].x < 0 && pages[1].x > -1366 && currentPage === 2 && paused === true) {
+	vo.currentTime = 7.65;
 }
-if(pages[1].x > -2700 && pages[1].x < -1366 && currentPage === 4 && paused === true)
-{
-vo.currentTime = 7.65;
+if (pages[1].x > -2700 && pages[1].x < -1366 && currentPage === 4 && paused === true) {
+	vo.currentTime = 7.65;
 }
 
 //SYNCING PAGE 3
 
-if(pages[1].x > -2700 && pages[1].x < -1366 && currentPage === 3 && paused === true)
-{
-vo.currentTime = 16.3;
+if (pages[1].x > -2700 && pages[1].x < -1366 && currentPage === 3 && paused === true) {
+	vo.currentTime = 16.3;
 }
-if(pages[1].x > -4133 && pages[1].x < -2700 && currentPage === 5 && paused === true)
-{
-vo.currentTime = 16.3;
+if (pages[1].x > -4133 && pages[1].x < -2700 && currentPage === 5 && paused === true) {
+	vo.currentTime = 16.3;
 }
 
 //SYNCING PAGE 4
@@ -54,37 +45,31 @@ vo.currentTime = 22.6;
 
 //SYNCING PAGE 5
 
-if(pages[1].x > -5478 && pages[1].x < -4133 && currentPage === 5 && paused === true)
-{
-vo.currentTime = 30.4;
+if (pages[1].x > -5478 && pages[1].x < -4133 && currentPage === 5 && paused === true) {
+	vo.currentTime = 30.4;
 }
-if(pages[1].x > -6882 && pages[1].x < -5478 && currentPage === 7 && paused === true)
-{
-vo.currentTime = 30.4;
+if (pages[1].x > -6882 && pages[1].x < -5478 && currentPage === 7 && paused === true) {
+	vo.currentTime = 30.4;
 }
 
 //SYNCING PAGE 6
 
-if(pages[1].x > -6882 && pages[1].x < -5478 && currentPage === 6 && paused === true)
-{
-vo.currentTime = 38.4;
+if (pages[1].x > -6882 && pages[1].x < -5478 && currentPage === 6 && paused === true) {
+	vo.currentTime = 38.4;
 }
-if(pages[1].x > -8228 && pages[1].x < -6882 && currentPage === 8 && paused === true)
-{
-vo.currentTime = 38.4;
+if (pages[1].x > -8228 && pages[1].x < -6882 && currentPage === 8 && paused === true) {
+	vo.currentTime = 38.4;
 }
 
 //SYNCING PAGE 7
 
-if(pages[1].x > -8228 && pages[1].x < -6882 && currentPage === 7 && paused === true)
-{
-vo.currentTime = 48.05;
+if (pages[1].x > -8228 && pages[1].x < -6882 && currentPage === 7 && paused === true) {
+	vo.currentTime = 48.05;
 }
-if(pages[1].x > -9573 && pages[1].x < -8228 && currentPage === 9 && paused === true)
-{
-vo.currentTime = 48.05;
+if (pages[1].x > -9573 && pages[1].x < -8228 && currentPage === 9 && paused === true) {
+	vo.currentTime = 48.05;
 }
-
+/*
 //SYNCING PAGE 8
 
 if(pages[1].x > -9573 && pages[1].x < -8228 && currentPage === 8 && paused === true)
@@ -217,60 +202,50 @@ if(pages[1].x > -26012 && pages[1].x < -24608 && currentPage === 21 && paused ==
 {
 vo.currentTime = 145.2;
 }
-
+*/
 
 	
-if(currentPage === 2 && narratorOn === true && paused === false)
-{
-vo.play();
+if (currentPage === 2 && narratorOn === true && paused === false) {
+    vo.play();
 }
 
 //PAGE 1 LINE 1
 
-if(vo.currentTime < 2.0 && vo.currentTime > 1.8)
-{
-value1 = 0;
-yPos = 564;
+if (vo.currentTime < 2.0 && vo.currentTime > 1.8) {
+    value1 = 0;
+    yPos = 564;
 }
-if(vo.currentTime < 2.4 && vo.currentTime > 2.0)
-{
-value1 = 1;
-yPos = 564;
+if (vo.currentTime < 2.4 && vo.currentTime > 2.0) {
+    value1 = 1;
+    yPos = 564;
 }
-if(vo.currentTime < 2.7 && vo.currentTime > 2.4)
-{
-value1 = 2;
-yPos = 564;
+if (vo.currentTime < 2.7 && vo.currentTime > 2.4) {
+    value1 = 2;
+    yPos = 564;
 }
-if(vo.currentTime < 3.0 && vo.currentTime > 2.7)
-{
-value1 = 3;
-yPos = 564;
+if (vo.currentTime < 3.0 && vo.currentTime > 2.7) {
+    value1 = 3;
+    yPos = 564;
 }
-if(vo.currentTime < 3.35 && vo.currentTime > 3.0)
-{
-value1 = 4;
-yPos = 564;
+if( vo.currentTime < 3.35 && vo.currentTime > 3.0) {
+	value1 = 4;
+	yPos = 564;
 }
-if(vo.currentTime < 3.6 && vo.currentTime > 3.35)
-{
-value1 = 5;
-yPos = 564;
+if (vo.currentTime < 3.6 && vo.currentTime > 3.35) {
+	value1 = 5;
+	yPos = 564;
 }
-if(vo.currentTime < 3.9 && vo.currentTime > 3.6)
-{
-value1 = 6;
-yPos = 564;
+if (vo.currentTime < 3.9 && vo.currentTime > 3.6) {
+	value1 = 6;
+	yPos = 564;
 }
-if(vo.currentTime < 4.15 && vo.currentTime > 3.9)
-{
-value1 = 7;
-yPos = 564;
+if (vo.currentTime < 4.15 && vo.currentTime > 3.9) {
+	value1 = 7;
+	yPos = 564;
 }
-if(vo.currentTime < 4.4 && vo.currentTime > 4.15)
-{
-value1 = 8;
-yPos = 564;
+if (vo.currentTime < 4.4 && vo.currentTime > 4.15) {
+	value1 = 8;
+	yPos = 564;
 }
 
 //PAGE 1 LINE 2
@@ -1025,6 +1000,7 @@ if(currentPage === 10 && narratorOn === true && paused === false)
 vo.play();
 }
 
+/*
 
 //PAGE 9 LINE 1
 
@@ -2065,7 +2041,7 @@ if(vo.currentTime < 155.0 && vo.currentTime > 152.7)
 value1 = 335;
 yPos = 624;
 }
-
+*/
 
 if(vo.currentTime > 155)
 {

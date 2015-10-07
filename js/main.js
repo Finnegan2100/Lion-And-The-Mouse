@@ -513,7 +513,6 @@ window.addEventListener("mouseup",onMouseUp,false);
 	initializeHotSpots();
 	
 
-	
 
 	function main() {
 
