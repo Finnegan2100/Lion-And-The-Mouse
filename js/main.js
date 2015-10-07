@@ -1,45 +1,5 @@
 
-var canvas = document.getElementById("canvas"),
-	context = canvas.getContext("2d"),
-	
-	currentState = "loading",  
-	narratorOn = false,
 
-	assetsToLoad = [],
-	widths1 = [],
-	pressedTouch = false,
-	
-	vx = 0,
-	mouseX = 0,
-	mouseY = 0,
-	tapX,	
-	tapY,
-	EASING = 0.18,
-	mouseDown = false,
-	touchDown = false, 
-	mouseUp = false, 
-	touchUp = false,
-	onPressed = false,
-	offPressed = false,
-	currentPage = 1,
-	pages = [],
-	moveLeft = false,
-	moveRight = false,
-	pressedHome = false,
-	pressedRight = false,
-	paused = false,
-	percentage = 0.01,
-	increment = .039,
-	mainCalled = false,
-	checkingLoads = 0,
-	
-	startingPoints1 = [],
-	value1 = 0, 
-	yPos = 564,
-
-	bigText = "Hoy es un día muy especial en Plaza Sésamo.  ¡Es el cumpleaños de Elmo!  Abelardo, Pancho, Lola, Chip y Gina están  planeando una fiesta sorpresa y cada uno tiene su tarea.  Pancho está a cargo de las decoraciones.  De camino a su casa se encuentra con Elmo.  — Pancho, Pancho ¿Sabes qué día es hoy?  Pancho, un poco nervioso, pretende no entender.  — Hoy es... el día del baño de Elefancio y ¡ya se  me ha hecho tarde! Nos vemos luego, Elmo.  Pancho se va y Elmo queda desconcertado.  — Hoy cumple años Elmo y Pancho no se acordó.  Chip y Lola preparan una invitación para la fiesta  que enviarán por correo electrónico.  Elmo entra de repente.  — Chip, Lola, ¿saben qué día es hoy?  — Hoy es... día de hacer limpieza en el café. Y hay  MUCHO por hacer. ¡Luego nos vemos, Elmo!  Elmo no entiende qué ha pasado.  ¡A todos se les olvidó su cumpleaños!  Abelardo y Gina están horneando el pastel sorpresa.  Elmo entra sin ser visto. “¡Elmo huele un pastel!”   — Ah si, es para… ¡el primo de Gina! Y ya tenemos que irnos.  Gina saca a Elmo de la cocina.  El Café Clic está listo para la fiesta.  — ¡Aquí está el pastel! —canta Abelardo.  — ¡Pues ya está todo listo! Sólo falta... ¿Alguien le  avisó a Elmo? —pregunta Lola alarmada.  Todos se miran con asombro. ¡No pueden creer que  se les hubiese olvidado el invitado de honor!  Sin darse cuenta, Elmo ha entrado al Café Clic.  — Amigos, Elmo los estaba buscando.  ¡Es Elmo! Sin haberlo planeado, todos gritan al tiempo,  “¡SORPRESA! ¡FELÍZ CUMPLEAÑOS!”  — Amigos, ¡se acordaron del cumpleaños de Elmo!  ¡Elmo pensó que lo habían olvidado!  Gina empieza a cantar “Cumpleaños Feliz” y  así comienza ¡la gran fiesta de Elmo!", 
-	sentences = bigText.split("  "),
-	words = bigText.split(" ");
 
  var loadingColor = Object.create(spriteObject);
 loadingColor.x = 300;
@@ -495,17 +455,11 @@ assetsToLoad.push(endHomePressedImage);
 
 function onLoad() { 
 	
-	checkingLoads++;
+	LION.checkingLoads++;
 }
 
 
-initializeAudio();
-
-
-window.addEventListener("mousemove",onMouseMove,false);
-window.addEventListener("mousedown",onMouseDown,false);
-window.addEventListener("mouseup",onMouseUp,false);
-
+	initializeAudio();
 	LION.init();
 	LION.resize();
 	
@@ -520,7 +474,7 @@ window.addEventListener("mouseup",onMouseUp,false);
 		checkTimings();
 
 		setTimeout(main,24);
-		context.clearRect(0,0,canvas.width,canvas.height);
+		LION.context.clearRect(0,0,LION.canvas.width,LION.canvas.height);
 
 		initializePages();
 		movePages();

@@ -29,17 +29,17 @@
 			touchCancel(event);
 		}
 		
-  touchDown = true;
-  touchUp = false;
+  LION.touchDown = true;
+  LION.touchUp = false;
 		
-  tapX = event.targetTouches[0].pageX - canvas.offsetLeft;
-  tapY = event.targetTouches[0].pageY - canvas.offsetTop;
+  LION.tapX = event.targetTouches[0].pageX - LION.canvas.offsetLeft;
+  LION.tapY = event.targetTouches[0].pageY - LION.canvas.offsetTop;
 	}
 
 	function touchMove(event) {
 	
-	   tapX = (event.targetTouches[0].pageX - canvas.offsetLeft) / LION.scale;
-	  tapY = (event.targetTouches[0].pageY - canvas.offsetTop) / LION.scale ;
+	   LION.tapX = (event.targetTouches[0].pageX - LION.canvas.offsetLeft) / LION.scale;
+	  LION.tapY = (event.targetTouches[0].pageY - LION.canvas.offsetTop) / LION.scale ;
 		event.preventDefault();
 		if ( event.touches.length === 1 ) {
 			curX = event.touches[0].pageX;
@@ -48,15 +48,15 @@
 			touchCancel(event);
 		}
 		
-  tapX = (event.targetTouches[0].pageX - canvas.offsetLeft) / LION.scale;
-  tapY = (event.targetTouches[0].pageY - canvas.offsetTop) / LION.scale ;
+  LION.tapX = (event.targetTouches[0].pageX - LION.canvas.offsetLeft) / LION.scale;
+  LION.tapY = (event.targetTouches[0].pageY - LION.canvas.offsetTop) / LION.scale ;
 	}
 	
 	function touchEnd(event) {
 		event.preventDefault();
 		
-		touchDown = false;
-		touchUp = true;
+		LION.touchDown = false;
+		LION.touchUp = true;
 		event.preventDefault();
 		
 		if ( fingerCount == 1 && curX != 0 ) {
@@ -112,12 +112,12 @@
 	}
 	function processingRoutine() {
 		var swipedElement = document.getElementById(triggerElementID);
-		if ( swipeDirection == 'left' && currentPage < 21) {
-			moveLeft = true;
-			moveRight = false;
-		} else if ( swipeDirection == 'right' && currentPage < 21) {
-			moveRight = true;
-			moveLeft = false;
+		if ( swipeDirection == 'left' && LION.currentPage < 21) {
+			LION.moveLeft = true;
+			LION.moveRight = false;
+		} else if ( swipeDirection == 'right' && LION.currentPage < 21) {
+			LION.moveRight = true;
+			LION.moveLeft = false;
 	
 		}
 	}

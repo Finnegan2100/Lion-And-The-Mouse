@@ -15,29 +15,29 @@
 	loadingWhiteImage.src = "images/loading-white.png";
 	loadingColorImage.src = "images/loading-color.png";
   
-    if(!mainCalled) {
+    if(LION.mainCalled === false) {
 		window.setTimeout(checkCurrentState,24);
 		
-		switch(currentState) {
+		switch(LION.currentState) {
 	
 			case "loading":	
 			
-				context.drawImage(loadingWhiteImage,loadingWhiteX,loadingWhiteY,loadingWhiteWidth,loadingWhiteHeight);
-				increment = assetsToLoad.length / 100;	
-				percentage = checkingLoads / 100;
-				context.drawImage(loadingColorImage,1,loadingColorImage.height - loadingColorImage.height * percentage,
+				LION.context.drawImage(loadingWhiteImage,loadingWhiteX,loadingWhiteY,loadingWhiteWidth,loadingWhiteHeight);
+				LION.increment = assetsToLoad.length / 100;	
+				LION.percentage = LION.checkingLoads / 100;
+				LION.context.drawImage(loadingColorImage,1,loadingColorImage.height - loadingColorImage.height * LION.percentage,
 				loadingColorImage.width,
-				loadingColorImage.height * percentage,449,399 - loadingColorImage.height * percentage,loadingColorImage.width,
-					loadingColorImage.height * percentage);
+				loadingColorImage.height * LION.percentage,449,399 - loadingColorImage.height * LION.percentage,loadingColorImage.width,
+					loadingColorImage.height * LION.percentage);
 	
-				if (percentage > .37) {
-					currentState = "play";
+				if (LION.percentage > .37) {
+					LION.currentState = "play";
 				}
 			break;
 
 			case "play": 
 				main();
-				mainCalled = true;
+				LION.mainCalled = true;
 			break;
 		}
 	}

@@ -7,49 +7,49 @@ for(var i = 0; i < pages.length; i++)
 { 
     
    
-		if(moveLeft === true)
+		if(LION.moveLeft === true)
 	{
-		vx = -325;
-		pages[i].x += (vx * EASING);
+		LION.vx = -325;
+		pages[i].x += (LION.vx * LION.EASING);
 		
 		if(pages[1].x < 1166)
-		paused = true;
+		LION.paused = true;
 	}
 	
-	if(moveRight === true)
+	if(LION.moveRight === true)
 	{
-		vx = 325;
-		pages[i].x += (vx * EASING);
-		paused = true;
+		LION.vx = 325;
+		pages[i].x += (LION.vx * LION.EASING);
+		LION.paused = true;
 	}
 		
-		if(moveLeft === true && pages[currentPage].x < 0 && currentPage >= 1 && currentPage < 21 && context.globalAlpha === 1)
+		if(LION.moveLeft === true && pages[LION.currentPage].x < 0 && LION.currentPage >= 1 && LION.currentPage < 21 && LION.context.globalAlpha === 1)
 		{
-		console.log(currentPage);
-		 moveLeft = false;
-		 currentPage++;
-		 paused = false;
+		console.log(LION.currentPage);
+		 LION.moveLeft = false;
+		 LION.currentPage++;
+		 LION.paused = false;
 		 
-		 mouseUp = false;
-		 touchUp = false;
+		 LION.mouseUp = false;
+		 LION.touchUp = false;
 		}
 		
 		
 		
-		if(moveRight === true && pages[currentPage - 1].x > 1366)
+		if(LION.moveRight === true && pages[LION.currentPage - 1].x > 1366)
 		{
 		 
-		 moveRight = false;
-		 currentPage--;
-		 mouseUp = false;
-		 touchUp = false;
-		 paused = false;
+		 LION.moveRight = false;
+		 LION.currentPage--;
+		 LION.mouseUp = false;
+		 LION.touchUp = false;
+		 LION.paused = false;
 		}
 	
-	if(moveLeft === false && moveRight === false)
+	if(LION.moveLeft === false && LION.moveRight === false)
 		{
-		 pages[currentPage - 1].x = 0;
-		 pages[currentPage].x = 1366;
+		 pages[LION.currentPage - 1].x = 0;
+		 pages[LION.currentPage].x = 1366;
 		} 
 }
 	

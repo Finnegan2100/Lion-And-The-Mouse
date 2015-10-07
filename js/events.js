@@ -1,21 +1,27 @@
 
+
+window.addEventListener("mousemove",onMouseMove,false);
+window.addEventListener("mousedown",onMouseDown,false);
+window.addEventListener("mouseup",onMouseUp,false);
+
+
 function onMouseDown(event) {
 
-	mouseDown = true;
-	mouseUp = false;
+	LION.mouseDown = true;
+	LION.mouseUp = false;
 	event.preventDefault(); 
 }
 
 function onMouseUp(event) {
 	
-	mouseDown = false;
-	mouseUp = true;
+	LION.mouseDown = false;
+	LION.mouseUp = true;
 	event.preventDefault(); 
 }
 
 function onMouseMove(event) { 
 
-	 mouseX = (event.pageX - canvas.offsetLeft) / LION.scale; 
-	 mouseY = (event.pageY - canvas.offsetTop) / LION.scale;
+	 LION.mouseX = (event.pageX - canvas.offsetLeft) / LION.scale; 
+	 LION.mouseY = (event.pageY - canvas.offsetTop) / LION.scale;
 	 event.preventDefault(); 
 }

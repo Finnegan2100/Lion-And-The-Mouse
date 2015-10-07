@@ -7,7 +7,7 @@ function initializeAudio() {
 	assetsToLoad.push(vo);
 
 	document.addEventListener('touchstart', function () {
-		if(!pressedTouch) {
+		if(!LION.pressedTouch) {
 			vo.play();
 			vo.pause();
 		}

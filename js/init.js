@@ -24,29 +24,29 @@ function initializeText() {
 
 
 //WRITING THE TEXT
-context.fillStyle = "#333";
+LION.context.fillStyle = "#333";
 
 if(LION.isMac && LION.isChrome) 
-context.font =  "37px sesame";
+LION.context.font =  "37px sesame";
 
 if(!LION.ios && !LION.isMac)
-context.font =  "bold 37px sesame";
+LION.context.font =  "bold 37px sesame";
 
 if(LION.isFirefox)
-context.font =  "37px sesame";
+LION.context.font =  "37px sesame";
 
 if(LION.isSafari)
-context.font =  "37px sesame";
+LION.context.font =  "37px sesame";
 
 if(LION.ios)
-context.font = "37px sesameIOS";
+LION.context.font = "37px sesameIOS";
 
 if(LION.isIE)
-context.font = "37px sesameIOS";
+LION.context.font = "37px sesameIOS";
 
 for (var i = 0; i < words.length; i++) {
-	context.fillStyle = "#000";
-	widths1.push(context.measureText(words[i]).width);
+	LION.context.fillStyle = "#000";
+	widths1.push(LION.context.measureText(words[i]).width);
 }
 	
 	
@@ -69,7 +69,7 @@ if(window.innerHeight > window.innerWidth) {
 
    
 
-	switch(canvas.style.height) {  
+	switch(LION.canvas.style.height) {  
 
 	        //PLAY BUTTON
 	
@@ -143,7 +143,7 @@ hotSpot2.y = 0;
 hotSpot2.width = 50;
 hotSpot2.height = 60;
 
-if(canvas.style.height !== 320 + 'px') {
+if(LION.canvas.style.height !== 320 + 'px') {
 hotSpot3.x = 280;
 hotSpot3.y = 580;
 hotSpot4.x = 433;
@@ -154,7 +154,7 @@ hotSpot4.width = 160;
 hotSpot4.height = 100;
 
 }
-if(canvas.style.height == 320 + 'px' && window.innerHeight === 529) { //IF IPHONE
+if(LION.canvas.style.height == 320 + 'px' && window.innerHeight === 529) { //IF IPHONE
 hotSpot3.x = 50;
 hotSpot3.y = 280;
 hotSpot3.width = 120;
@@ -170,7 +170,7 @@ hotSpot6.x = 250;
 
 }
 
-if(canvas.style.height == 300 + 'px' && window.innerHeight === 356) { //IF IPOD
+if(LION.canvas.style.height == 300 + 'px' && window.innerHeight === 356) { //IF IPOD
 hotSpot3.x = 50;
 hotSpot3.y = 280;
 hotSpot3.width = 120;
@@ -214,7 +214,7 @@ pages[j].x = pages[j - 1].x + 1366;
 
 for(var k = 0; k < 21; k++)
 {
-context.drawImage(assetsToLoad[k + 2],pages[k].x,pages[k].y,pages[k].width,pages[k].height);
+LION.context.drawImage(assetsToLoad[k + 2],pages[k].x,pages[k].y,pages[k].width,pages[k].height);
 }
 	
 	
