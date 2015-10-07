@@ -6,7 +6,7 @@ addEventListener("mouseup",onMouseUp,false);
 
 
 function onMouseDown(event) {
-
+	
 	LION.mouseDown = true;
 	LION.mouseUp = false;
 	event.preventDefault(); 

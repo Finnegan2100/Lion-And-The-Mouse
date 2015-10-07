@@ -6,7 +6,6 @@
 		initializeAudio();
 		LION.init();
 		LION.resize();
-		
 		initializeText();
 		initializeHotSpots();
 	}

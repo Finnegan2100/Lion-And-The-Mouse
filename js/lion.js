@@ -24,15 +24,11 @@ var LION = {
 	onPressed: false,
 	offPressed: false,
 	currentPage: 1,
-	
 	canvas: document.getElementById("canvas"),
 	context: this.canvas.getContext("2d"),
 	currentState: "loading",  
 	narratorOn: false,
-
 	pressedTouch: false,
-	
-	
 	moveLeft: false,
 	moveRight: false,
 	pressedHome: false,
@@ -42,12 +38,8 @@ var LION = {
 	increment: .039,
 	mainCalled: false,
 	checkingLoads: 0,
-	
 	value1: 0, 
 	yPos: 564,
-
-	
-	
 
     init: function() {
 		

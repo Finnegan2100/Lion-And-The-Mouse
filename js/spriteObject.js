@@ -14,7 +14,7 @@ var spriteObject = {
     return this.x + (this.width / 2);
   },
   centerY: function() {
-    return this.y + (this.height / 2);
+	return this.y + (this.height / 2);
   },
   halfWidth: function() {
     return this.width / 2;
