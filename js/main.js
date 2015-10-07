@@ -12,139 +12,13 @@ var canvas = document.getElementById("canvas"),
 	vx = 0;
 
 
-//TAKE BIG ARRAY OF WORDS:
 
-var bigText = "Hoy es un día muy especial en Plaza Sésamo.  ¡Es el cumpleaños de Elmo!  Abelardo, Pancho, Lola, Chip y Gina están  planeando una fiesta sorpresa y cada uno tiene su tarea.  Pancho está a cargo de las decoraciones.  De camino a su casa se encuentra con Elmo.  — Pancho, Pancho ¿Sabes qué día es hoy?  Pancho, un poco nervioso, pretende no entender.  — Hoy es... el día del baño de Elefancio y ¡ya se  me ha hecho tarde! Nos vemos luego, Elmo.  Pancho se va y Elmo queda desconcertado.  — Hoy cumple años Elmo y Pancho no se acordó.  Chip y Lola preparan una invitación para la fiesta  que enviarán por correo electrónico.  Elmo entra de repente.  — Chip, Lola, ¿saben qué día es hoy?  — Hoy es... día de hacer limpieza en el café. Y hay  MUCHO por hacer. ¡Luego nos vemos, Elmo!  Elmo no entiende qué ha pasado.  ¡A todos se les olvidó su cumpleaños!  Abelardo y Gina están horneando el pastel sorpresa.  Elmo entra sin ser visto. “¡Elmo huele un pastel!”   — Ah si, es para… ¡el primo de Gina! Y ya tenemos que irnos.  Gina saca a Elmo de la cocina.  El Café Clic está listo para la fiesta.  — ¡Aquí está el pastel! —canta Abelardo.  — ¡Pues ya está todo listo! Sólo falta... ¿Alguien le  avisó a Elmo? —pregunta Lola alarmada.  Todos se miran con asombro. ¡No pueden creer que  se les hubiese olvidado el invitado de honor!  Sin darse cuenta, Elmo ha entrado al Café Clic.  — Amigos, Elmo los estaba buscando.  ¡Es Elmo! Sin haberlo planeado, todos gritan al tiempo,  “¡SORPRESA! ¡FELÍZ CUMPLEAÑOS!”  — Amigos, ¡se acordaron del cumpleaños de Elmo!  ¡Elmo pensó que lo habían olvidado!  Gina empieza a cantar “Cumpleaños Feliz” y  así comienza ¡la gran fiesta de Elmo!"; 
-
-var sentences = bigText.split("  ");
-var words = bigText.split(" ");
-
-for (var i = 0; i < words.length; i++) {
-	context.fillStyle = "#000";
-	widths1.push(context.measureText(words[i]).width);
-}
+var bigText;
+var sentences;
+var words;
 
 
-var LION = {
 
-    WIDTH: 1366,  //WIDTH + HEIGHT are only used as values for determining the ratio. CurrentWidth/CurrentHeight are used for the resizing
-    HEIGHT:  667, 
-    RATIO:  null,
-	scale: 1,
-    currentWidth:  null,
-    currentHeight:  null,
-	ua: navigator.userAgent.toLowerCase(),
-
-    init: function() {
-		
-		LION.RATIO = LION.WIDTH / LION.HEIGHT;    //SETS THE W/H RATIO (2.04) TO KEEP THE GAME CORRECTLY SIZED 
-	},
-
-
-    resize: function() {
-		
-		var innerW = window.innerWidth,
-			innerH= window.innerHeight,
-			c = canvas.style;
-	
-	   if (innerW > innerH) {
-	       
-			LION.currentHeight = innerH; //Repeat the assigments from init every call to resize 
-			LION.currentWidth = LION.currentHeight * LION.RATIO;
-			
-			
-			c.width = (LION.currentWidth / 1.5352) + 'px';
-			c.height = LION.currentHeight + 'px';
-			c.marginTop = 0 + "px";
-			
-			if (c.height === 320 + 'px') {
-				c.marginLeft = 80 + "px";
-			}
-			if (c.height === 268 + 'px') {
-				c.marginLeft = 100 + "px";
-			}
-			if (innerW === 480) {
-				c.marginLeft = 30 + "px";
-				page1.height = 1468;
-			}
-			
-			LION.scale = LION.currentWidth / LION.WIDTH;
-		}
-		
-		
-		if (innerH > innerW) {
-			
-			c.width = innerW + 'px';
-			
-			LION.scale = LION.currentWidth / LION.WIDTH;
-			
-		    if (innerW === 768) {		//IPAD
-			c.height = 672 + 'px';
-			c.marginTop = 130 + "px";
-			LION.currentWidth = 1376 + 'px';
-			}
-			if (innerW === 320) {		//IPHONE  && IPOD
-				
-				if (innerH === 529) {  //IPHONE
-				
-					c.height = 320 + 'px';
-					LION.currentWidth = 655.35 + 'px';
-					c.marginTop = 50 + "px";
-					c.marginLeft = 0 + "px";
-				}
-				
-				if (innerH === 356) {    //IPOD
-				
-					c.marginTop = 30 + "px";
-					c.height = 300 + 'px';
-					LION.currentWidth = 455.35 + 'px';
-					c.marginLeft = 0 + "px";
-					page1.height = 1468;
-				}
-			}
-			
-			if (innerW === 360) {		//GALAXY S3,S4,S5
-				c.height = 287 + 'px';
-				c.marginTop = 95 + "px";
-				LION.currentWidth = 587.769;
-			}
-			if (innerW === 600) {		//NEXUS 7
-				c.height = 431 + 'px';
-				c.marginTop = 125 + "px";
-				LION.currentWidth = 882.677;
-			}
-			if (innerW === 601) {		//TAB 4
-				c.height = 431 + 'px';
-				c.marginTop = 135 + "px";
-				LION.currentWidth = 892.677;
-			}
-			if (innerW === 800) {		//NEXUS 10
-				c.height = 631 + 'px';
-				c.marginTop = 175 + "px";
-				LION.currentWidth = 1292.272;
-			}
-			if (innerW === 384) {		//OPTIMUS G
-				c.height = 311 + 'px';
-				c.marginTop = 90 + "px";
-				LION.currentWidth = 636.920;
-			}
-		}
-        window.setTimeout(function() {
-                window.scrollTo(0,1);
-        }, 1);	
-    }
-};
-
-
-LION.android = LION.ua.indexOf('android') > -1 ? true : false;
-LION.ios = ( LION.ua.indexOf('iphone') > -1 || LION.ua.indexOf('ipad') > -1  ) ? 
-    true : false;
-LION.isFirefox = typeof InstallTrigger !== 'undefined';  
-LION.isMac = navigator.platform.toUpperCase().indexOf('MAC')>=0;
-LION.isSafari = Object.prototype.toString.call(window.HTMLElement).indexOf('Constructor') > 0;
-LION.isChrome = !!window.chrome;             
-LION.isIE = /*@cc_on!@*/false || !!document.documentMode; 
- 
  var loadingColor = Object.create(spriteObject);
 loadingColor.x = 300;
 loadingColor.y = 200;
@@ -658,22 +532,6 @@ window.addEventListener("mousemove",onMouseMove,false);
 window.addEventListener("mousedown",onMouseDown,false);
 window.addEventListener("mouseup",onMouseUp,false);
 
-
-
-	
-	
-	function fadeOut() {
-		
-		context.globalAlpha -= .03;
-	}
-	function fadeIn() {
-		
-		context.globalAlpha += .03;
-	}
-	
-   
-   
-	
 	LION.init();
 	LION.resize();
 	
@@ -683,122 +541,135 @@ window.addEventListener("mouseup",onMouseUp,false);
 
 	
 
-function main() {
+	function main() {
 
- 
-	//mouseDown = false;
+		LION.resize();
+		checkTimings();
 
-	LION.resize();
-	checkTimings();
-	
-	setTimeout(main,24);
-	context.clearRect(0,0,canvas.width,canvas.height);
+		setTimeout(main,24);
+		context.clearRect(0,0,canvas.width,canvas.height);
 
-	initializePages();
-	movePages();
-	renderPageText();
-	checkCollision();
-	renderUI();
-	
-
-
-	if (currentPage > 1 && currentPage < 21 && narratorOn === true && paused === false) {
-
-		context.save();
-		context.globalAlpha = .8;
-
-		if(yPos === 564)
-			context.fillStyle = "#ebebeb";
-
-		if(yPos === 624)
-			context.fillStyle = "#dcdcdc";
-
-		context.globalAlpha = .7;
-		context.fillStyle = "#ff2841";
-		context.fillText(words[value1],startingPoints1[value1],yPos);
-		context.restore();
+		initializePages();
+		movePages();
+		renderPageText();
+		checkCollision();
+		renderUI();
 	}
+	
+function initializeTextContent() {
+	
+	bigText = "Hoy es un día muy especial en Plaza Sésamo.  ¡Es el cumpleaños de Elmo!  Abelardo, Pancho, Lola, Chip y Gina están  planeando una fiesta sorpresa y cada uno tiene su tarea.  Pancho está a cargo de las decoraciones.  De camino a su casa se encuentra con Elmo.  — Pancho, Pancho ¿Sabes qué día es hoy?  Pancho, un poco nervioso, pretende no entender.  — Hoy es... el día del baño de Elefancio y ¡ya se  me ha hecho tarde! Nos vemos luego, Elmo.  Pancho se va y Elmo queda desconcertado.  — Hoy cumple años Elmo y Pancho no se acordó.  Chip y Lola preparan una invitación para la fiesta  que enviarán por correo electrónico.  Elmo entra de repente.  — Chip, Lola, ¿saben qué día es hoy?  — Hoy es... día de hacer limpieza en el café. Y hay  MUCHO por hacer. ¡Luego nos vemos, Elmo!  Elmo no entiende qué ha pasado.  ¡A todos se les olvidó su cumpleaños!  Abelardo y Gina están horneando el pastel sorpresa.  Elmo entra sin ser visto. “¡Elmo huele un pastel!”   — Ah si, es para… ¡el primo de Gina! Y ya tenemos que irnos.  Gina saca a Elmo de la cocina.  El Café Clic está listo para la fiesta.  — ¡Aquí está el pastel! —canta Abelardo.  — ¡Pues ya está todo listo! Sólo falta... ¿Alguien le  avisó a Elmo? —pregunta Lola alarmada.  Todos se miran con asombro. ¡No pueden creer que  se les hubiese olvidado el invitado de honor!  Sin darse cuenta, Elmo ha entrado al Café Clic.  — Amigos, Elmo los estaba buscando.  ¡Es Elmo! Sin haberlo planeado, todos gritan al tiempo,  “¡SORPRESA! ¡FELÍZ CUMPLEAÑOS!”  — Amigos, ¡se acordaron del cumpleaños de Elmo!  ¡Elmo pensó que lo habían olvidado!  Gina empieza a cantar “Cumpleaños Feliz” y  así comienza ¡la gran fiesta de Elmo!";
+	sentences = bigText.split("  ");
+	words = bigText.split(" ");
+
+	for (var i = 0; i < words.length; i++) {
+		context.fillStyle = "#000";
+		widths1.push(context.measureText(words[i]).width);
+	}
+}	
+
+function renderPageText() {
+	
+	if(currentPage > 1 && currentPage < 21) {
 
 
+switch(currentPage)
+{
+case 2:
+context.fillText(sentences[0],100,564);
+context.fillText(sentences[1],100,624);
+break;
 
-    
-	  
-		  if(mouseUp === true)
-		  {
-			if(currentPage === 1)
-			{
-					if(offPressed === true)
-					{
-					moveLeft = true;
-					offPressed = false;
-					narratorOn = false;
-					mouseUp = false;
-					pressedTouch = true;
-					}
-				   if(onPressed === true)
-				   {
-					moveLeft = true;
-					onPressed = false;
-					narratorOn = true;
-					mouseUp = false;
-					pressedTouch = true;
-		
-				  }
-			}
-			
-			if(currentPage > 1)
-			{
-				  if(pressedHome === true)
-				  {
-				  pressedHome = false;
-				  }
-				  
-				  if(pressedRight === true)
-				  {
-				  moveLeft = true;
-				  pressedRight = false;
-				  mouseUp = false;
-				  }
-			}
-		 
-		  }
-		  
-		  if(touchUp === true)
-		  {
-		  	if(currentPage === 1)
-			{
-					if(offPressed === true)
-					{
-					moveLeft = true;
-					offPressed = false;
-					narratorOn = false;
-					touchUp = false;
-					pressedTouch = true;
-					}
-				   if(onPressed === true)
-				   {
-					moveLeft = true;
-					onPressed = false;
-					narratorOn = true;
-					touchUp = false;
-					vo.play();
-					pressedTouch = true;
-				  }
-			}
-			
-			if(currentPage > 1)
-			{
-				  if(pressedHome === true)
-				  {
-				  pressedHome = false;
-				  }
-				  
-				  if(pressedRight === true)
-				  {
-				  moveLeft = true;
-				  pressedRight = false;
-				  mouseUp = false;
-				  }
-			}
-			}
+case 3:
+context.fillText(sentences[2],100,564);
+context.fillText(sentences[3],100,624);
+break;
+
+case 4:
+context.fillText(sentences[4],100,564);
+context.fillText(sentences[5],100,624);
+break;
+
+case 5:
+context.fillText(sentences[6],100,564);
+context.fillText(sentences[7],100,624);
+break;
+
+case 6:
+context.fillText(sentences[8],100,564);
+context.fillText(sentences[9],100,624);
+break;
+
+case 7:
+context.fillText(sentences[10],100,564);
+context.fillText(sentences[11],100,624);
+break;
+
+case 8:
+context.fillText(sentences[12],100,564);
+context.fillText(sentences[13],100,624);
+break;
+
+case 9:
+context.fillText(sentences[14],100,564);
+context.fillText(sentences[15],100,624);
+break;
+
+case 10:
+context.fillText(sentences[16],100,564);
+context.fillText(sentences[17],100,624);
+break;
+
+case 11:
+context.fillText(sentences[18],100,564);
+context.fillText(sentences[19],100,624);
+break;
+
+case 12:
+context.fillText(sentences[20],100,564);
+context.fillText(sentences[21],100,624);
+break;
+
+case 13:
+context.fillText(sentences[22],100,564);
+context.fillText(sentences[23],100,624);
+break;
+
+case 14:
+context.fillText(sentences[24],100,564);
+context.fillText(sentences[25],100,624);
+break;
+
+case 15:
+context.fillText(sentences[26],100,564);
+context.fillText(sentences[27],100,624);
+break;
+
+case 16:
+context.fillText(sentences[28],100,564);
+context.fillText(sentences[29],100,624);
+break;
+
+case 17:
+context.fillText(sentences[30],100,564);
+context.fillText(sentences[31],100,624);
+break;
+
+case 18:
+context.fillText(sentences[32],100,564);
+context.fillText(sentences[33],100,624);
+break;
+
+case 19:
+context.fillText(sentences[34],100,564);
+context.fillText(sentences[35],100,624);
+break;
+
+case 20:
+context.fillText(sentences[36],100,564);
+context.fillText(sentences[37],100,624);
+break;
+}
+
+}
 }

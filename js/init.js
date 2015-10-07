@@ -1,4 +1,5 @@
 
+
 function initializeText() {
 	
 	startingPoints1 = [100,177,227,280,344,425,576,630,734,"p1ln2",100,160,200,413,470,  //HOY / ES

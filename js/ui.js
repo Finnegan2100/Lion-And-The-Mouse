@@ -28,4 +28,65 @@ function renderUI() {
 	if (paused === true && moveLeft === false && moveRight === false && currentPage > 1 && currentPage < 21) {
 		context.drawImage(rightButtonHintImage,rightButtonHint.x,rightButtonHint.y,rightButtonHint.width,rightButtonHint.height);
 	}
+	
+	if (mouseUp === true) {
+		if (currentPage === 1) {
+			if (offPressed === true) {
+				moveLeft = true;
+				offPressed = false;
+				narratorOn = false;
+				mouseUp = false;
+				pressedTouch = true;
+			}
+			if (onPressed === true) {
+				moveLeft = true;
+				onPressed = false;
+				narratorOn = true;
+				mouseUp = false;
+				pressedTouch = true;
+			}
+		}
+			
+		if (currentPage > 1) {
+			if (pressedHome === true) {
+				pressedHome = false;
+			} 
+		   if (pressedRight === true) {
+				moveLeft = true;
+				pressedRight = false;
+				mouseUp = false;
+			}
+		}	 
+	}
+		  
+	if (touchUp === true) {
+		if (currentPage === 1) {
+			if (offPressed === true) {
+				moveLeft = true;
+				offPressed = false;
+				narratorOn = false;
+				touchUp = false;
+				pressedTouch = true;
+			}
+			if (onPressed === true)	{
+				moveLeft = true;
+				onPressed = false;
+				narratorOn = true;
+				touchUp = false;
+				vo.play();
+				pressedTouch = true;
+			}
+		}	
+		if (currentPage > 1) {
+			if (pressedHome === true) {
+				pressedHome = false;
+			}
+			if (pressedRight === true) {
+				moveLeft = true;
+				pressedRight = false;
+				mouseUp = false;
+			}
+		}
+	}
+	
 }
