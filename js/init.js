@@ -148,14 +148,15 @@ hotSpot2.y = 0;
 hotSpot2.width = 50;
 hotSpot2.height = 60;
 
-if(LION.canvas.style.height !== 320 + 'px') {
-hotSpot3.x = 280;
-hotSpot3.y = 580;
-hotSpot4.x = 433;
-hotSpot4.y = 580;
-hotSpot3.width = 160;
+if (LION.canvas.style.height !== 320 + 'px') {
+
+hotSpot3.x = 148;
+hotSpot3.y = 420;
+hotSpot4.x = 260;
+hotSpot4.y = 420;
+hotSpot3.width = 110;
 hotSpot3.height = 100;
-hotSpot4.width = 160;
+hotSpot4.width = 110;
 hotSpot4.height = 100;
 
 }
@@ -257,26 +258,26 @@ LION.context.drawImage(assetsToLoad[k + 2],pages[k].x,pages[k].y,pages[k].width,
 	narradorBG.height = 130;
 
 	var narradorOn = Object.create(spriteObject);
-	narradorOn.x = 20;
-	narradorOn.y = 20;
+	narradorOn.x = 258;
+	narradorOn.y = 420;
 	narradorOn.width = 144;
 	narradorOn.height = 104;
 
 	var narradorOnPressed = Object.create(spriteObject);
-	narradorOnPressed.x = 20;
-	narradorOnPressed.y = 23;
+	narradorOnPressed.x = 258;
+	narradorOnPressed.y = 420;
 	narradorOnPressed.width = 144;
 	narradorOnPressed.height = 104;
 
 	var narradorOff = Object.create(spriteObject);
-	narradorOff.x = 170;
-	narradorOff.y = 20;
+	narradorOff.x = 400;
+	narradorOff.y = 420;
 	narradorOff.width = 144;
 	narradorOff.height = 104;
 
 	var narradorOffPressed = Object.create(spriteObject);
-	narradorOffPressed.x = 170;
-	narradorOffPressed.y = 23;
+	narradorOffPressed.x = 400;
+	narradorOffPressed.y = 420;
 	narradorOffPressed.width = 144;
 	narradorOffPressed.height = 104;
 
