@@ -145,7 +145,7 @@ hotSpot1.height = 115;
 
 hotSpot2.x = 0;
 hotSpot2.y = 0;
-hotSpot2.width = 50;
+hotSpot2.width = 100;
 hotSpot2.height = 60;
 
 if (LION.canvas.style.height !== 320 + 'px') {
@@ -296,14 +296,14 @@ LION.context.drawImage(assetsToLoad[k + 2],pages[k].x,pages[k].y,pages[k].width,
 	dropUp.height = 26;
 
 	var home = Object.create(spriteObject);  //DROP DOWN IMAGE ON TOP OF SCREEN
-	home.x = 0;
-	home.y = 0;
+	home.x = 8;
+	home.y = 8;
 	home.width = 148;
 	home.height = 56;
 
 	var homePressed = Object.create(spriteObject);  //DROP DOWN IMAGE ON TOP OF SCREEN
-	homePressed.x = 0;
-	homePressed.y = 0;
+	homePressed.x = 8;
+	homePressed.y = 8;
 	homePressed.width = 148;
 	homePressed.height = 56;
 

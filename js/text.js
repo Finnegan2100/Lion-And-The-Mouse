@@ -4,13 +4,13 @@ function renderPageText() {
 		switch(LION.currentPage) {
 		
 			case 2:
-			LION.context.fillText(sentences[0],100,564);
-			LION.context.fillText(sentences[1],100,624);
+			LION.context.fillText(sentences[0],45,564);
+			LION.context.fillText(sentences[1],45,624);
 			break;
 
 			case 3:
-			LION.context.fillText(sentences[2],100,564);
-			LION.context.fillText(sentences[3],100,624);
+			LION.context.fillText(sentences[2],45,564);
+			LION.context.fillText(sentences[3],45,624);
 			break;
 
 			case 4:
