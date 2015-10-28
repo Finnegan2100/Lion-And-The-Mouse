@@ -62,7 +62,7 @@ function initializeHotSpots() {
 	
 	if (window.innerWidth > window.innerHeight) {
  
-		hotSpot1.x = 800;
+		hotSpot1.x = 710;
 		hotSpot6.x = 800;
 	
 	if (window.innerWidth === 568) {
@@ -139,9 +139,9 @@ if (window.innerHeight > window.innerWidth) {
 }
 
 
-hotSpot1.y = 520;
-hotSpot1.width = 100;
-hotSpot1.height = 100;
+hotSpot1.y = 535;
+hotSpot1.width = 175;
+hotSpot1.height = 115;
 
 hotSpot2.x = 0;
 hotSpot2.y = 0;
@@ -361,14 +361,12 @@ LION.context.drawImage(assetsToLoad[k + 2],pages[k].x,pages[k].y,pages[k].width,
 
 	  
 	var hotSpot1 = Object.create(spriteObject);  //PLAY BUTTON HOTSPOT
-
-
 	hotSpot1.x = 1180;
 	hotSpot1.y = 475;
 	hotSpot1.width = 180;
 	hotSpot1.height = 180;
 
-	var hotSpot2 = Object.create(spriteObject);  //PLAY BUTTON HOTSPOT
+	var hotSpot2 = Object.create(spriteObject);  //HOME BUTTON HOTSPOT
 	hotSpot2.x = 0;
 	hotSpot2.y = 0;
 	hotSpot2.width = 120;

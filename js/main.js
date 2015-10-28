@@ -23,7 +23,8 @@
 		initializePages();
 		movePages();
 		renderPageText();
-		checkCollision();
+		
 		renderUI();
+        checkCollision();
 	}
 
