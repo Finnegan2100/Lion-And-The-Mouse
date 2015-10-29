@@ -307,7 +307,7 @@ LION.context.drawImage(assetsToLoad[k + 2],pages[k].x,pages[k].y,pages[k].width,
 
 	var textboxShadow = Object.create(spriteObject);  //TEXTBOX SHADOW 
 	textboxShadow.x = -13;
-	textboxShadow.y = 0;
+	textboxShadow.y = 10;
 	textboxShadow.width = 1390;
 	textboxShadow.height = 150;
 
@@ -339,10 +339,10 @@ LION.context.drawImage(assetsToLoad[k + 2],pages[k].x,pages[k].y,pages[k].width,
 	fin.height = 65;
 
 	var leer = Object.create(spriteObject);
-	leer.x = 975;
-	leer.y = 515;
-	leer.width = 290;
-	leer.height = 136;
+	leer.x = 1160;
+	leer.y = 603;
+	leer.width = 200;
+	leer.height = 60;
 
 	var endHome = Object.create(spriteObject);
 	endHome.x = 710;
@@ -355,8 +355,6 @@ LION.context.drawImage(assetsToLoad[k + 2],pages[k].x,pages[k].y,pages[k].width,
 	endHomePressed.y = 555;
 	endHomePressed.width = 105;
 	endHomePressed.height = 75;
-
-
 	  
 	var hotSpot1 = Object.create(spriteObject);  //PLAY BUTTON HOTSPOT
 	hotSpot1.x = 1210;
@@ -383,10 +381,10 @@ LION.context.drawImage(assetsToLoad[k + 2],pages[k].x,pages[k].y,pages[k].width,
 	hotSpot4.height = 62;
 
 	var hotSpot5 = Object.create(spriteObject);  //LEER DE NUEVO HOTSPOT
-	hotSpot5.x = 1210;
-	hotSpot5.y = 475;
-	hotSpot5.width = 148;
-	hotSpot5.height = 56;
+	hotSpot5.x = 1160;
+	hotSpot5.y = 603;
+	hotSpot5.width =200;
+	hotSpot5.height = 60;
 
 	var hotSpot6 = Object.create(spriteObject);  //X BUTTON HOTSPOT
 	hotSpot6.x = 1300;

@@ -5,7 +5,7 @@ function renderUI() {
 		LION.context.drawImage(narradorOnImage,narradorOn.x,narradorOn.y,narradorOn.width,narradorOn.height);
 	}
 	if (LION.currentPage === 7) {
-		LION.context.drawImage(finImage,fin.x,fin.y,fin.width,fin.height);
+		//LION.context.drawImage(finImage,fin.x,fin.y,fin.width,fin.height);
 		LION.context.drawImage(leerImage,leer.x,leer.y,leer.width,leer.height);
 	}
 	if (LION.currentPage > 1) {
@@ -13,7 +13,7 @@ function renderUI() {
 		LION.context.drawImage(textboxShadowImage,textboxShadow.x,textboxShadow.y,textboxShadow.width,textboxShadow.height);
 	}	
 	if (LION.currentPage > 1) {
-		if (LION.onPressed === false && LION.currentPage < 21) {
+		if (LION.onPressed === false && LION.currentPage < 7) {
 			LION.context.drawImage(rightButtonImage,rightButton.x,rightButton.y,rightButton.width,rightButton.height);
 		}
 		if (LION.onPressed === true && LION.pressedRight === true && LION.currentPage < 21) {

@@ -47,8 +47,9 @@ function checkCollision() {
 	if (hitTestPoint(LION.mouseX,LION.mouseY,hotSpot5))  {
 
 		if (LION.mouseDown && LION.currentPage === 7) {
-			startFade = true;
-			LION.value1 = 0;
+			//startFade = true;
+			//LION.value1 = 0;
+            LION.currentPage = 1;
 		}
 	}
   
@@ -100,9 +101,10 @@ function checkCollision() {
   
 	if (hitTestPoint(LION.tapX,LION.tapY,hotSpot5))  {
 
-		if (LION.touchDown && LION.currentPage === 21) {
-			startFade = true;
-			LION.value1 = 0;
+		if (LION.touchDown && LION.currentPage === 7) {
+			//startFade = true;
+			//LION.value1 = 0;
+            LION.currentPage = 1;
 		}
     }
   
