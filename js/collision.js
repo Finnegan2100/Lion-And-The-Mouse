@@ -47,19 +47,10 @@ function checkCollision() {
 	if (hitTestPoint(LION.mouseX,LION.mouseY,hotSpot5))  {
 
 		if (LION.mouseDown && LION.currentPage === 7) {
-			//startFade = true;
-			//LION.value1 = 0;
             LION.currentPage = 1;
 		}
 	}
-  
-	if (hitTestPoint(LION.mouseX,LION.mouseY,hotSpot6))  {
- 
-		if (LION.mouseDown) {
-			//window.close();
-		}
-	}
-  
+    
 	if (hitTestPoint(LION.tapX,LION.tapY,hotSpot1))  {
  
 		if (LION.touchDown && LION.currentPage > 1 && LION.currentPage < 21) {
@@ -102,8 +93,6 @@ function checkCollision() {
 	if (hitTestPoint(LION.tapX,LION.tapY,hotSpot5))  {
 
 		if (LION.touchDown && LION.currentPage === 7) {
-			//startFade = true;
-			//LION.value1 = 0;
             LION.currentPage = 1;
 		}
     }

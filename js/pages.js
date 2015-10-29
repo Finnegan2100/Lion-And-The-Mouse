@@ -17,7 +17,8 @@ function movePages() {
 		LION.paused = true;
 	}
 		
-	if (LION.moveLeft && pages[LION.currentPage].x < 0 && LION.currentPage >= 1 && LION.currentPage < 7 && LION.context.globalAlpha === 1) {
+	if (LION.moveLeft && pages[LION.currentPage].x < 0 && LION.currentPage >= 1 && 
+            LION.currentPage < 7 && LION.context.globalAlpha === 1) {
 
 		LION.moveLeft = false;
 		LION.currentPage++;

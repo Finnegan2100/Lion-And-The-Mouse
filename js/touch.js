@@ -1,7 +1,5 @@
 
-	
-
-	var triggerElementID = null; // this variable is used to identity the triggering element
+    var triggerElementID = null; // this variable is used to identity the triggering element
 	var fingerCount = 0;
 	var startX = 0;
 	var startY = 0;

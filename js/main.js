@@ -10,8 +10,6 @@
 		initializeHotSpots();
 	}
 	
-
-
 	function main() {
 
 		LION.resize();

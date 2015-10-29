@@ -9,18 +9,8 @@ function initializeText() {
 	"p5ln1","filler",150,227,308,348,414,480,575,630,790,825,887,"p5ln2",100,165,220,332,450,523,643,757, //HOY  / ME
 	"p6ln1",100,234,285,335,365,460,574,624,"p6ln2",147,227,365,455,543,573,710,763,813, //PANCHO / HOY
 	"p7ln1",100,185,217,297,470,540,716,806,850,"p7ln2",100,174,334,404,523, //CHIP / QUE
-	"p8ln1",100,194,295,350,"p8ln2","filler",148,247,337,472,545,610,656, //ELMO / CHIP
-	"p9ln1","filler",148,226,310,373,426,533,689,739,783,880,910,"p9ln2",100,246,315,432,560,630,760, //HOY / MUCHO
-	"p10ln1",100,193,246,407,482,535,"p10ln2",100,150,254,300,360,470,520, //ELMO / A
-	"p11ln1",100,265,297,390,494,690,730,847,"p11ln2",100,193,294,354,414,514,636,743,796, //ABELARDO / ELMO
-	"p12ln1","filler1","filler2",160,216,264,310,440,492,603,654,758,792,843,1001,1073,"p12ln2",100,190,280,315,405,460,503, //AH / GINA
-	"p13ln1",100,140,232,302,386,468,557,600,"p13ln2","filler",149,250,334,373,503,644, //EL / AQUI
-	"p14ln1","filler",148,250,305,390,476,570,653,779,938,"p14ln2",100,200,230,340,550,630, //PUES / AVISO
-	"p15ln1",100,210,260,370,440,610,680,820,920,"p15ln2",100,148,209,347,507,545,695,750, //TODOS / SE
-	"p16ln1",100,164,270,408,500,555,703,743,832,"p16ln2","filler",147,297,387,447,574,  //SIN / AMIGOS
-	"p17ln1",100,157,263,324,467,650,755,865,911,"p17ln2",100,334,445, //ES  SORPRESA
-	"p18ln1","filler",148,294,354,539,603,821,874,"p18ln2",100,204,314,390,435,560, //AMIGOS / ELMO
-	"p19ln1",100,188,349,377,502,742,843,"p19ln2",100,158,334,385,477,586,636]; //GINA / ASI
+	"p8ln1",100,194,295,350,"p8ln2","filler",148,247,337,472,545,610,656 //ELMO / CHIP
+]; //GINA / ASI
 
 
 //WRITING THE TEXT
@@ -199,31 +189,20 @@ hotSpot5.y = 513;
 hotSpot5.width = 290;
 hotSpot5.height = 136;
 
-/*
-hotSpot6.x = 720;
-hotSpot6.y = 5;
-hotSpot6.width = 160;
-hotSpot6.height = 89;
-*/
-	
 }
 
 function initializePages() {
 	
-	
-for(var j = 1; j < 21; j++)
-{
-pages[j].x = pages[j - 1].x + 1366;
-}
+    for(var j = 1; j < 21; j++) {
+        pages[j].x = pages[j - 1].x + 1366;
+    }
 
-//DRAWING THE IMAGES ONTO THE PAGE
+    //DRAWING THE IMAGES ONTO THE PAGE
 
-for(var k = 0; k < 21; k++)
-{
-LION.context.drawImage(assetsToLoad[k + 2],pages[k].x,pages[k].y,pages[k].width,pages[k].height);
-}
-	
-	
+    for(var k = 0; k < 21; k++) {
+        LION.context.drawImage(assetsToLoad[k+2],pages[k].x,
+                pages[k].y,pages[k].width,pages[k].height);
+    }
 }
 
 	
@@ -403,8 +382,6 @@ LION.context.drawImage(assetsToLoad[k + 2],pages[k].x,pages[k].y,pages[k].width,
 	textboxShadowImage.addEventListener("load", onLoad, false);
 	textboxShadowImage.src = "images/Colombia_ebook_textboxtestimage.png";
 	assetsToLoad.push(textboxShadowImage);
-
-
 
 	var page1 = Object.create(spriteObject);
 	page1.x = 0;
