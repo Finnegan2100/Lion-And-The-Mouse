@@ -139,12 +139,12 @@ if (window.innerHeight > window.innerWidth) {
 }
 
 
-hotSpot1.y = 15;
+hotSpot1.y = 608;
 hotSpot1.width = 175;
 hotSpot1.height = 115;
 
 hotSpot2.x = 0;
-hotSpot2.y = 0;
+hotSpot2.y = 608;
 hotSpot2.width = 100;
 hotSpot2.height = 60;
 
@@ -281,8 +281,6 @@ LION.context.drawImage(assetsToLoad[k + 2],pages[k].x,pages[k].y,pages[k].width,
 	narradorOffPressed.width = 144;
 	narradorOffPressed.height = 104;
 
-
-
 	var dropDown = Object.create(spriteObject);  //DROP DOWN IMAGE ON TOP OF SCREEN
 	dropDown.x = 0;
 	dropDown.y = 0;
@@ -297,33 +295,33 @@ LION.context.drawImage(assetsToLoad[k + 2],pages[k].x,pages[k].y,pages[k].width,
 
 	var home = Object.create(spriteObject);  //DROP DOWN IMAGE ON TOP OF SCREEN
 	home.x = 8;
-	home.y = 8;
+	home.y = 608;
 	home.width = 148;
 	home.height = 56;
 
 	var homePressed = Object.create(spriteObject);  //DROP DOWN IMAGE ON TOP OF SCREEN
 	homePressed.x = 8;
-	homePressed.y = 8;
+	homePressed.y = 608;
 	homePressed.width = 148;
 	homePressed.height = 56;
 
 	var textboxShadow = Object.create(spriteObject);  //TEXTBOX SHADOW 
 	textboxShadow.x = -13;
-	textboxShadow.y = 510;
+	textboxShadow.y = 0;
 	textboxShadow.width = 1390;
 	textboxShadow.height = 150;
 
 	var rightButton = Object.create(spriteObject);  //PLAY BUTTON 
-	rightButton.x = 1110;
-	rightButton.y = 5;
-	rightButton.width = 250;
-	rightButton.height = 104;
+	rightButton.x = 1210;
+	rightButton.y = 608;
+	rightButton.width = 148;
+	rightButton.height = 56;
 
 	var rightButtonPressed = Object.create(spriteObject);  //PLAY BUTTON 
-	rightButtonPressed.x = 1110;
-	rightButtonPressed.y = 5;
-	rightButtonPressed.width = 250;
-	rightButtonPressed.height = 104;
+	rightButtonPressed.x = 1210;
+	rightButtonPressed.y = 608;
+	rightButtonPressed.width = 148;
+	rightButtonPressed.height = 56;
 
 	var rightButtonHint = Object.create(spriteObject);  //PLAY BUTTON 
 	rightButtonHint.x = 1200;
@@ -361,14 +359,14 @@ LION.context.drawImage(assetsToLoad[k + 2],pages[k].x,pages[k].y,pages[k].width,
 
 	  
 	var hotSpot1 = Object.create(spriteObject);  //PLAY BUTTON HOTSPOT
-	hotSpot1.x = 1180;
+	hotSpot1.x = 1210;
 	hotSpot1.y = 475;
-	hotSpot1.width = 180;
-	hotSpot1.height = 180;
+	hotSpot1.width = 148;
+	hotSpot1.height = 56;
 
 	var hotSpot2 = Object.create(spriteObject);  //HOME BUTTON HOTSPOT
 	hotSpot2.x = 0;
-	hotSpot2.y = 0;
+	hotSpot2.y = 608;
 	hotSpot2.width = 120;
 	hotSpot2.height = 60;
 
@@ -385,10 +383,10 @@ LION.context.drawImage(assetsToLoad[k + 2],pages[k].x,pages[k].y,pages[k].width,
 	hotSpot4.height = 62;
 
 	var hotSpot5 = Object.create(spriteObject);  //LEER DE NUEVO HOTSPOT
-	hotSpot5.x = 770;
-	hotSpot5.y = 533;
-	hotSpot5.width = 92;
-	hotSpot5.height = 80;
+	hotSpot5.x = 1210;
+	hotSpot5.y = 475;
+	hotSpot5.width = 148;
+	hotSpot5.height = 56;
 
 	var hotSpot6 = Object.create(spriteObject);  //X BUTTON HOTSPOT
 	hotSpot6.x = 1300;
@@ -651,7 +649,7 @@ LION.context.drawImage(assetsToLoad[k + 2],pages[k].x,pages[k].y,pages[k].width,
 
 	var leerImage = new Image();
 	leerImage.addEventListener("load", onLoad, false);
-	leerImage.src = "images/Colombia_ebook_LEERDENUEVO.png";
+	leerImage.src = "images/button2/again_1.png";
 	assetsToLoad.push(leerImage);
 
 	var homeImage = new Image();

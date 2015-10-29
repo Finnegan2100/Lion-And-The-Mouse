@@ -4,7 +4,7 @@ function renderUI() {
 		LION.context.drawImage(narradorOffImage,narradorOff.x,narradorOff.y,narradorOff.width,narradorOff.height);
 		LION.context.drawImage(narradorOnImage,narradorOn.x,narradorOn.y,narradorOn.width,narradorOn.height);
 	}
-	if (LION.currentPage === 21 && pages[22].x <= -24900.5) {
+	if (LION.currentPage === 7) {
 		LION.context.drawImage(finImage,fin.x,fin.y,fin.width,fin.height);
 		LION.context.drawImage(leerImage,leer.x,leer.y,leer.width,leer.height);
 	}

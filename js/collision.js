@@ -55,7 +55,7 @@ function checkCollision() {
 	if (hitTestPoint(LION.mouseX,LION.mouseY,hotSpot6))  {
  
 		if (LION.mouseDown) {
-			window.close();
+			//window.close();
 		}
 	}
   
