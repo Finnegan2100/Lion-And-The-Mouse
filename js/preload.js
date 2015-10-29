@@ -7,8 +7,8 @@
 		loadingColorX = 449,
 		loadingColorY = 198,
 		loadingColorWidth = 529,
-		loadingColorHeight = 0,
-        loadingSourceY = 0;
+		loadingColorHeight = 400,
+        loadingSourceY = 400;
 
 
 (function checkCurrentState() {
@@ -17,8 +17,8 @@
 	var loadingWhiteImage = new Image(),
 		loadingColorImage = new Image();
 	
-	loadingWhiteImage.src = "images/wso_whiteoutline.png";
-	loadingColorImage.src = "images/wso_bk.png";
+	loadingWhiteImage.src = "images/wso_bk.png";
+	loadingColorImage.src = "images/wso_outlinewhitebk.png";
   
     if(LION.mainCalled === false) {
 		window.setTimeout(checkCurrentState,24);
@@ -39,13 +39,13 @@ console.log(loadingColorWidth,loadingColorHeight,loadingWhiteWidth,loadingWhiteH
 				//LION.increment = assetsToLoad.length / 100;	
 				//LION.percentage = LION.checkingLoads / 100;
                 //loadingSourceY += 10;
-                loadingColorHeight += 10;
+                loadingColorHeight -= 10;
 				//LION.context.drawImage(loadingColorImage,1,loadingColorHeight - loadingColorHeight * LION.percentage,
 				//loadingColorWidth,
 				//loadingColorHeight * LION.percentage,529,loadingColorHeight * LION.percentage,loadingColorWidth,
 				//	loadingColorHeight * LION.percentage);
 	
-				if (loadingColorHeight > 400) {
+				if (loadingColorHeight < 4) {
 					LION.currentState = "play";
 				}
 			break;
