@@ -205,25 +205,6 @@ function initializePages() {
     }
 }
 
-	
- var loadingColor = Object.create(spriteObject);
-	loadingColor.x = 300;
-	loadingColor.y = 200;
-	loadingColor.width = 530;
-	loadingColor.height = 200;
-
-	var loadingColorImage = new Image();
-	loadingColorImage.src = "images/loading-color.png";
-
-	var loadingWhiteImage = new Image();
-	loadingWhiteImage.src = "images/loading-white.png";
-
-	var loadingWhite = Object.create(spriteObject);
-	loadingWhite.x = 449;
-	loadingWhite.y = 198;
-	loadingWhite.width = 530;
-	loadingWhite.height = 200;
-
 	var xButton = Object.create(spriteObject);
 	xButton.x = 1300;
 	xButton.y = 15;

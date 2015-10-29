@@ -34,7 +34,7 @@ var LION = {
 	pressedHome: false,
 	pressedRight: false,
 	paused: false,
-	percentage: 0.01,
+	percentage: 100,
 	increment: .039,
 	mainCalled: false,
 	checkingLoads: 0,

@@ -1,19 +1,24 @@
-(function checkCurrentState() {
+
 	
 	var loadingWhiteX = 449,
 		loadingWhiteY = 198,
-		loadingWhiteWidth = 530,
-		loadingWhiteHeight = 200,
-		loadingColorX = 300,
-		loadingColorY = 200,
-		loadingColorWidth = 530,
-		loadingColorHeight = 200;
+		loadingWhiteWidth = 529,
+		loadingWhiteHeight = 299,
+		loadingColorX = 449,
+		loadingColorY = 198,
+		loadingColorWidth = 529,
+		loadingColorHeight = 0,
+        loadingSourceY = 0;
+
+
+(function checkCurrentState() {
+
 
 	var loadingWhiteImage = new Image(),
 		loadingColorImage = new Image();
 	
-	loadingWhiteImage.src = "images/loading-white.png";
-	loadingColorImage.src = "images/loading-color.png";
+	loadingWhiteImage.src = "images/wso_whiteoutline.png";
+	loadingColorImage.src = "images/wso_bk.png";
   
     if(LION.mainCalled === false) {
 		window.setTimeout(checkCurrentState,24);
@@ -21,16 +26,26 @@
 		switch(LION.currentState) {
 	
 			case "loading":	
-			
-				LION.context.drawImage(loadingWhiteImage,loadingWhiteX,loadingWhiteY,loadingWhiteWidth,loadingWhiteHeight);
-				LION.increment = assetsToLoad.length / 100;	
-				LION.percentage = LION.checkingLoads / 100;
-				LION.context.drawImage(loadingColorImage,1,loadingColorImage.height - loadingColorImage.height * LION.percentage,
-				loadingColorImage.width,
-				loadingColorImage.height * LION.percentage,449,399 - loadingColorImage.height * LION.percentage,loadingColorImage.width,
-					loadingColorImage.height * LION.percentage);
+LION.context.clearRect(0,0,canvas.width,canvas.height);
+LION.context.drawImage(loadingWhiteImage,loadingWhiteX,loadingWhiteY,loadingWhiteWidth,
+                                       loadingWhiteHeight);                
+                
+LION.context.drawImage(loadingColorImage,0,0,loadingColorWidth,
+                       loadingColorHeight,loadingColorX,loadingColorY,loadingWhiteWidth,
+                                       loadingColorHeight * 0.75); 				
+                
+               
+console.log(loadingColorWidth,loadingColorHeight,loadingWhiteWidth,loadingWhiteHeight);                
+				//LION.increment = assetsToLoad.length / 100;	
+				//LION.percentage = LION.checkingLoads / 100;
+                //loadingSourceY += 10;
+                loadingColorHeight += 10;
+				//LION.context.drawImage(loadingColorImage,1,loadingColorHeight - loadingColorHeight * LION.percentage,
+				//loadingColorWidth,
+				//loadingColorHeight * LION.percentage,529,loadingColorHeight * LION.percentage,loadingColorWidth,
+				//	loadingColorHeight * LION.percentage);
 	
-				if (LION.percentage > .37) {
+				if (loadingColorHeight > 400) {
 					LION.currentState = "play";
 				}
 			break;
