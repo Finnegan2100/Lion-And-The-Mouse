@@ -525,72 +525,72 @@ LION.context.drawImage(assetsToLoad[k + 2],pages[k].x,pages[k].y,pages[k].width,
 
 	var page8Image = new Image();
 	page8Image.addEventListener("load", onLoad, false);
-	page8Image.src = "images/Colombia_ebook_slide_8.png";
+	page8Image.src = "images/pages/page_6.png";
 	assetsToLoad.push(page8Image);
 
 	var page9Image = new Image();
 	page9Image.addEventListener("load", onLoad, false);
-	page9Image.src = "images/Colombia_ebook_slide_7.png";
+	page9Image.src = "images/pages/page_6.png";
 	assetsToLoad.push(page9Image);
 
 	var page10Image = new Image();
 	page10Image.addEventListener("load", onLoad, false);
-	page10Image.src = "images/Colombia_ebook_slide_9.png";
+	page10Image.src = "images/pages/page_6.png";
 	assetsToLoad.push(page10Image);
 
 	var page11Image = new Image();
 	page11Image.addEventListener("load", onLoad, false);
-	page11Image.src = "images/Colombia_ebook_slide_10.png";
+	page11Image.src = "images/pages/page_6.png";
 	assetsToLoad.push(page11Image);
 
 	var page12Image = new Image();
 	page12Image.addEventListener("load", onLoad, false);
-	page12Image.src = "images/Colombia_ebook_slide_11.png";
+	page12Image.src = "images/pages/page_6.png";
 	assetsToLoad.push(page12Image);
 
 	var page13Image = new Image();
 	page13Image.addEventListener("load", onLoad, false);
-	page13Image.src = "images/Colombia_ebook_slide_12.png";
+	page13Image.src = "images/pages/page_6.png";
 	assetsToLoad.push(page13Image);
 
 	var page14Image = new Image();
 	page14Image.addEventListener("load", onLoad, false);
-	page14Image.src = "images/Colombia_ebook_slide_13.png";
+	page14Image.src = "images/pages/page_6.png";
 	assetsToLoad.push(page14Image);
 
 	var page15Image = new Image();
 	page15Image.addEventListener("load", onLoad, false);
-	page15Image.src = "images/Colombia_ebook_slide_14.png";
+	page15Image.src = "images/pages/page_6.png";
 	assetsToLoad.push(page15Image);
 
 	var page16Image = new Image();
 	page16Image.addEventListener("load", onLoad, false);
-	page16Image.src = "images/Colombia_ebook_slide_15.png";
+	page16Image.src = "images/pages/page_6.png";
 	assetsToLoad.push(page16Image);
 
 	var page17Image = new Image();
 	page17Image.addEventListener("load", onLoad, false);
-	page17Image.src = "images/Colombia_ebook_slide_16.png";
+	page17Image.src = "images/pages/page_6.png";
 	assetsToLoad.push(page17Image);
 
 	var page18Image = new Image();
 	page18Image.addEventListener("load", onLoad, false);
-	page18Image.src = "images/Colombia_ebook_slide_17.png";
+	page18Image.src = "images/pages/page_6.png";
 	assetsToLoad.push(page18Image);
 
 	var page19Image = new Image();
 	page19Image.addEventListener("load", onLoad, false);
-	page19Image.src = "images/Colombia_ebook_slide_18.png";
+	page19Image.src = "images/pages/page_6.png";
 	assetsToLoad.push(page19Image);
 
 	var page20Image = new Image();
 	page20Image.addEventListener("load", onLoad, false);
-	page20Image.src = "images/Colombia_ebook_slide_19.png";
+	page20Image.src = "images/pages/page_6.png";
 	assetsToLoad.push(page20Image);
 
 	var page21Image = new Image();
 	page21Image.addEventListener("load", onLoad, false);
-	page21Image.src = "images/Colombia_ebook_finalscreen.png";
+	page21Image.src = "images/pages/page_6.png";
 	assetsToLoad.push(page21Image);
 
 

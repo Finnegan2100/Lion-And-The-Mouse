@@ -19,9 +19,9 @@
 
 		setTimeout(main,24);
 		LION.context.clearRect(0,0,LION.canvas.width,LION.canvas.height);
-
+        movePages();
 		initializePages();
-		movePages();
+		
 		renderPageText();
 		
 		renderUI();

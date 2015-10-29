@@ -49,6 +49,7 @@ function renderUI() {
 			
 		if (LION.currentPage > 1) {
 			if (LION.pressedHome === true) {
+                LION.currentPage = 1;
 				LION.pressedHome = false;
 			} 
 		   if (LION.pressedRight === true) {
@@ -79,12 +80,13 @@ function renderUI() {
 		}	
 		if (LION.currentPage > 1) {
 			if (LION.pressedHome === true) {
+                LION.currentPage = 1;
 				LION.pressedHome = false;
 			}
 			if (LION.pressedRight === true) {
 				LION.moveLeft = true;
 				LION.pressedRight = false;
-				LION.mouseUp = false;
+				LION.touchUp = false;
 			}
 		}
 	}
