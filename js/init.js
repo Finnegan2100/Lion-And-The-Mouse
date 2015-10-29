@@ -139,7 +139,7 @@ if (window.innerHeight > window.innerWidth) {
 }
 
 
-hotSpot1.y = 535;
+hotSpot1.y = 15;
 hotSpot1.width = 175;
 hotSpot1.height = 115;
 
@@ -160,7 +160,7 @@ hotSpot4.width = 110;
 hotSpot4.height = 100;
 
 }
-if(LION.canvas.style.height == 320 + 'px' && window.innerHeight === 529) { //IF IPHONE
+if (LION.canvas.style.height == 320 + 'px' && window.innerHeight === 529) { //IF IPHONE
 hotSpot3.x = 50;
 hotSpot3.y = 280;
 hotSpot3.width = 120;
@@ -314,14 +314,14 @@ LION.context.drawImage(assetsToLoad[k + 2],pages[k].x,pages[k].y,pages[k].width,
 	textboxShadow.height = 150;
 
 	var rightButton = Object.create(spriteObject);  //PLAY BUTTON 
-	rightButton.x = 1100;
-	rightButton.y = 555;
+	rightButton.x = 1110;
+	rightButton.y = 5;
 	rightButton.width = 250;
 	rightButton.height = 104;
 
 	var rightButtonPressed = Object.create(spriteObject);  //PLAY BUTTON 
-	rightButtonPressed.x = 1100;
-	rightButtonPressed.y = 555;
+	rightButtonPressed.x = 1110;
+	rightButtonPressed.y = 5;
 	rightButtonPressed.width = 250;
 	rightButtonPressed.height = 104;
 

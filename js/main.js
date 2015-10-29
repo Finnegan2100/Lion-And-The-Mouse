@@ -21,10 +21,8 @@
 		LION.context.clearRect(0,0,LION.canvas.width,LION.canvas.height);
         movePages();
 		initializePages();
-		
-		renderPageText();
-		
 		renderUI();
         checkCollision();
+        renderPageText();
 	}
 
